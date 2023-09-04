@@ -1,11 +1,11 @@
-name: "Publish Release"
+name: "Deploy"
 
 on:
   workflow_dispatch
 
 # Allow one run of this workflow per branch and cancel existing runs if triggered again
 concurrency:
-  group: jdmdepot-publish-${{ github.ref }}
+  group: jdmdepot-deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
           dotnet-version: '7.x'
       - run: dotnet restore
       - run: dotnet build --no-restore -c Release
-      - run: dotnet publish -c Release --no-restore --output=dist
+      - run: dotnet publish -c Release --no-restore JdmDepot.UI/JdmDepot.UI.csproj --output=dist
       - run: dotnet tool restore
       - run: |
           git config user.name "github-actions[bot]"

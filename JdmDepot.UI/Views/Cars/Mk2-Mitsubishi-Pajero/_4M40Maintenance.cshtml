@@ -12,5 +12,5 @@
 	</p>
 </div>
 
-@Html.RenderPartialAsync("MaintenanceItems", Model.MaintenanceItemsModel);
+@{ await Html.RenderPartialAsync("MaintenanceItems", Model.MaintenanceItemsModel); }
 

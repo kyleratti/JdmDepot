@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="1.1.1"></a>
+## [1.1.1](https://www.github.com/kyleratti/JdmDepot/releases/tag/v1.1.1) (2023-9-4)
+
+### Bug Fixes
+
+* don't render task ([89ca0fc](https://www.github.com/kyleratti/JdmDepot/commit/89ca0fc6c1a5f30e1627a0c5e931ca42754bcd64))
+
 <a name="1.1.0"></a>
 ## [1.1.0](https://www.github.com/kyleratti/JdmDepot/releases/tag/v1.1.0) (2023-9-4)
 

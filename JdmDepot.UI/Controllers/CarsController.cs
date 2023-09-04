@@ -1,6 +1,7 @@
 ﻿using JdmDepot.Common.DataModels;
 using JdmDepot.UI.Models;
 using JdmDepot.UI.Services;
+using JdmDepot.UI.Views.Cars.Mk2_Mitsubishi_Pajero;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JdmDepot.UI.Controllers;
@@ -26,8 +27,8 @@ public class CarsController : Controller
 	{
 		var items = await _carMetadataCache.GetMaintenanceItemsForCar("mk2-mitsubishi-pajero", "4m40");
 
-		return View("MaintenanceItems", new MaintenanceItemsModel(
+		return View("Mk2-Mitsubishi-Pajero/_4M40Maintenance", new _4M40Maintenance(new MaintenanceItemsModel(
 			Title: Resources.MK2_Mitsubishi_Pajero_4M40_Maintenance,
-			MaintenanceItems: items));
+			MaintenanceItems: items)));
 	}
 }

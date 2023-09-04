@@ -1,0 +1,16 @@
+﻿@model JdmDepot.UI.Views.Cars.Mk2_Mitsubishi_Pajero._4M40Maintenance
+
+@{
+	ViewData["Title"] = Model.MaintenanceItemsModel.Title;
+}
+
+<div>
+	<p>
+		The 4M40 engine is the 2.8L inline 4-cylinder turbo diesel engine from Mitsubishi.
+		It was available for the entire production run of the MK2 with few modifications.
+		The engine produced 123 horsepower at 4000 rpm and 217 lb-ft torque at 2000 rpm.
+	</p>
+</div>
+
+@Html.RenderPartialAsync("MaintenanceItems", Model.MaintenanceItemsModel);
+

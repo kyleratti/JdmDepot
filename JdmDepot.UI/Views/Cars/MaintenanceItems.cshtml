@@ -1,0 +1,64 @@
+﻿@using JdmDepot.UI.Views.Shared.Components.MaintenanceTable
+@using JdmDepot.Common.DataModels
+@using JdmDepot.UI.Util
+@model MaintenanceItemsModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+@if (!Model.MaintenanceItems.Any())
+{
+	<p>
+		@Resources.Maintenance_NoItemsFound
+	</p>
+}
+else
+{
+	var maintenanceItemsByType = Model.MaintenanceItems
+		.GroupBy(x => x.GetType())
+		.ToDictionary(x => x.Key, x => x.ToArray());
+
+	<h2>Table of Contents</h2>
+	<ul>
+	@foreach (var itemGroup in maintenanceItemsByType)
+	{
+		var itemHeading = itemGroup.Value.First().Merge(
+			fluidMaintenanceItem: _ => Resources.Fluids_Title,
+			filterMaintenanceItem: _ => Resources.Filters_Title,
+			beltMaintenanceItem: _ => Resources.Belts_Title);
+
+		<li>
+			<a href="@TextHelper.ToKebabCase(itemHeading)">
+				@itemHeading
+			</a>
+		</li>
+	}
+	</ul>
+
+	foreach (var itemGroup in maintenanceItemsByType)
+	{
+		var firstItem = itemGroup.Value.First();
+
+		var itemHeading = firstItem.Merge(
+			fluidMaintenanceItem: _ => Resources.Fluids_Title,
+			filterMaintenanceItem: _ => Resources.Filters_Title,
+			beltMaintenanceItem: _ => Resources.Belts_Title);
+
+		var itemBody = await firstItem.Merge(
+			fluidMaintenanceItem: async _ => await Html.PartialAsync("Components/MaintenanceTable/FluidMaintenanceTable", new FluidMaintenanceTable(itemGroup.Value.Cast<FluidMaintenanceItem>().ToArray())),
+			filterMaintenanceItem: async _ => await Html.PartialAsync("Components/MaintenanceTable/FilterMaintenanceTable", new FilterMaintenanceTable(itemGroup.Value.Cast<FilterMaintenanceItem>().ToArray())),
+			beltMaintenanceItem: async _ => await Html.PartialAsync("Components/MaintenanceTable/BeltsMaintenanceTable", new BeltsMaintenanceTable(itemGroup.Value.Cast<BeltMaintenanceItem>().ToArray())));
+
+		<section class="maintenance-item-group" id="@TextHelper.ToKebabCase(itemHeading)">
+			<h2 class="maintenance-item-heading">
+				@itemHeading
+			</h2>
+
+			<div class="maintenance-item-table">
+				@itemBody
+			</div>
+		</section>
+	}
+}
+

@@ -1,0 +1,53 @@
+---
+import { PartLink } from "../maintenance";
+import PartWebLink from "./PartWebLink.astro";
+import { parse } from "marked";
+import InlineDef from "./InlineDef.astro";
+import ConditionalRender from "./ConditionalRender.astro";
+import MaintenanceCardPill from "./MaintenanceCardPill.astro";
+export interface Props {
+	title: string;
+	partLinks: PartLink[];
+	pills: string[];
+	notes: string | null;
+}
+---
+<div class="min-h-32 w-1/2 p-2 max-w-xs min-w-[250px] group">
+	<div class="bg-red-100 group-hover:bg-red-200 min-h-full">
+		<div class="text-sm bg-red-300 group-hover:bg-red-400 drop-shadow-md mb-1 p-1 text-center font-medium">
+			{Astro.props.title}
+			<ConditionalRender condition={Astro.props.pills.length > 0}>
+				<div class="my-1 text-gray-600 font-normal">
+					{Astro.props.pills.map(pill => (
+							<MaintenanceCardPill>
+								{pill}
+							</MaintenanceCardPill>
+					))}
+				</div>
+			</ConditionalRender>
+		</div>
+		<div class="text-sm text-gray-600 flex flex-wrap flex-col justify-around p-2">
+			<slot />
+
+			<ConditionalRender render={Astro.props.partLinks.length > 0}>
+				<div>
+					<InlineDef title="Part Links:">
+						<ul class="flex flex-wrap flex-col list-disc">
+							{Astro.props.partLinks.map(partLink => (
+								<li class="mx-8"><PartWebLink item={partLink} /></li>
+							))}
+						</ul>
+					</InlineDef>
+				</div>
+			</ConditionalRender>
+
+			<ConditionalRender render={(Astro.props.notes ?? "").length > 0}>
+				<div>
+					<InlineDef title="Note:">
+						<span set:html={parse(Astro.props.notes ?? "")}></span>
+					</InlineDef>
+				</div>
+			</ConditionalRender>
+		</div>
+	</div>
+</div>

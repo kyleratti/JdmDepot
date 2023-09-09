@@ -1,0 +1,46 @@
+---
+import Navigation from "../components/Navigation/Navigation.astro";
+interface Props {
+	title: string;
+	metaTags?: {
+		description?: string;
+	};
+}
+
+const { title, metaTags } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={metaTags?.description ?? ""} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} - JDM Depot</title>
+	</head>
+	<body>
+	<header class="bg-red-400 px-4 py-2 lg:px-8 lg:py-4 drop-shadow-xl mb-8">
+		<span class="font-bold mr-10">
+			JDM Depot
+		</span>
+		<Navigation />
+	</header>
+
+	<div class="container m-auto">
+		<slot />
+	</div>
+	</body>
+</html>
+<style is:global>
+	:root {
+	}
+	html {
+		font-family: system-ui, sans-serif;
+	}
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
+	}
+</style>

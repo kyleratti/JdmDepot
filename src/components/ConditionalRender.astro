@@ -1,0 +1,6 @@
+---
+export interface Props {
+	condition: boolean;
+}
+---
+{Astro.props.condition && <slot />}

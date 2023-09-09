@@ -1,0 +1,44 @@
+---
+export interface Props {
+	text: string;
+	relativeUrl: string;
+	exact?: boolean;
+}
+const getUrl = (url: string) => {
+	const newUrl = new URL(url, Astro.url);
+
+	return newUrl.pathname + newUrl.hash;
+};
+
+const isActiveUrl: boolean = (() => {
+	const currentUrl = Astro.url;
+
+	if (Astro.props.exact) {
+		return currentUrl.pathname === Astro.props.relativeUrl;
+	}
+
+	return currentUrl.pathname.startsWith(Astro.props.relativeUrl);
+})();
+
+const classes = (...params: (string | { [className: string]: boolean; })[]) => {
+	const allClasses: string[] = [];
+
+	for (const item of params) {
+		if (typeof item === "string")
+			allClasses.push(item);
+		else {
+			for (const [className, _] of Object.entries(item).filter(([_, isActive]) => isActive)) {
+				allClasses.push(className);
+			}
+		}
+	}
+
+	return allClasses.join(" ");
+};
+---
+<a
+	class={classes("mr-4 hover:underline md:mr-6", { "font-semibold": isActiveUrl })}
+	href={getUrl(Astro.props.relativeUrl)}
+>
+	<slot />
+</a>

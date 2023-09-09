@@ -1,0 +1,122 @@
+---
+import { parse } from "marked";
+import Layout from "@layouts/Layout.astro";
+import rawMaintenanceItemsYml from "@data/mk2-mitsubishi-pajero/maintenance-4m40.yml";
+
+
+import { quartsToLiters } from "@util/math";
+import MaintenanceCard from "@components/MaintenanceCard.astro";
+import type { MaintenanceItems } from "@/maintenance";
+import InlineDef from "@components/InlineDef.astro";
+import ConditionalRender from "@components/ConditionalRender.astro";
+
+const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
+---
+<Layout title="4M40 Maintenance - MK2 Mitsubishi Pajero">
+	<main class="md:container mx-2 lg:mx-auto">
+		<div class="lg:w-1/2 m-auto">
+			<div class="text-xl mb-4">MK2 Mitsubishi Pajero</div>
+			<h1 class="text-4xl mb-4">4M40 Maintenance</h1>
+
+			<p>
+				The 4M40 engine is the 2.8L inline 4-cylinder turbo diesel by Mitsubishi. It was available for the entire production run of the MK2 with few modifications. The engine produces 123 horsepower at 4,000 rpm and 217 lb-ft torque at 2,000 rpm.
+			</p>
+
+			<div class="table-of-contents container my-4">
+				<h2 class="text-3xl">Table of Contents</h2>
+				<ul class="list-disc ml-8">
+					<li><a class="text-blue-600" href="#fluids">Fluids</a></li>
+					<li><a class="text-blue-600" href="#filters">Filters</a></li>
+					<li><a class="text-blue-600" href="#belts">Belts</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="my-4 lg:mx-8" id="fluids">
+			<h2 class="text-3xl">Fluids</h2>
+
+			<div class="flex flex-wrap flex-row">
+				{maintenance.fluids.map(fluid => (
+					<MaintenanceCard
+						title={fluid.name}
+						pills={[
+							`${fluid["capacity-quarts"]} Quarts`,
+							`${quartsToLiters(fluid["capacity-quarts"]).toFixed(1)} Liters`,
+						]}
+						partLinks={fluid["part-links"] ?? []}
+						notes={fluid.notes ?? null}
+					>
+						<div class="text-gray-600 text-sm">
+							<InlineDef title="Specification">
+								{fluid.specification}
+							</InlineDef>
+						</div>
+					</MaintenanceCard>
+				))}
+			</div>
+		</div>
+
+		<div class="my-4 lg:mx-8" id="filters">
+			<h2 class="text-3xl">Filters</h2>
+
+			<div class="flex flex-wrap flex-row">
+				{maintenance.filters.map(filter => (
+					<MaintenanceCard
+						title={filter.name}
+						pills={[]}
+						partLinks={filter["part-links"] ?? []}
+						notes={filter.notes ?? null}
+					>
+						<div class="text-gray-600 text-sm">
+							<ConditionalRender condition={(filter["manufacturer-part-number"] ?? "").length > 0}>
+								{(<div>
+									<InlineDef title="Manufacturer Part #">
+										{filter["manufacturer-part-number"] ?? ""}
+									</InlineDef>
+								</div>)}
+							</ConditionalRender>
+							<ConditionalRender condition={(filter["alternative-part-numbers"] ?? "").length > 0}>
+								{<div>
+									<InlineDef title="Alt. Part #s">
+										<ul class="list-disc">
+											{(filter["alternative-part-numbers"] ?? []).map(altPartNum =>
+												<li class="mx-8">{altPartNum.text}</li>
+											)}
+										</ul>
+									</InlineDef>
+								</div>}
+							</ConditionalRender>
+						</div>
+					</MaintenanceCard>
+				))}
+			</div>
+		</div>
+
+		<div class="my-4 lg:mx-8" id="belts">
+			<h2 class="text-3xl">Belts</h2>
+
+			<div class="flex flex-wrap flex-row">
+				{maintenance.belts.map(belt => (
+					<MaintenanceCard
+						title={belt.name}
+						pills={[]}
+						partLinks={belt["part-links"] ?? []}
+						notes={null}
+					>
+						<div class="text-gray-600 text-sm">
+							<ConditionalRender condition={(belt["manufacturer-part-number"] ?? "").length > 0}>
+								{(<div>
+									<InlineDef title="Manufacturer Part #">
+										{belt["manufacturer-part-number"] ?? ""}
+									</InlineDef>
+								</div>)}
+							</ConditionalRender>
+
+							<InlineDef title="Quantity">{belt.quantity}</InlineDef>
+						</div>
+					</MaintenanceCard>
+				))}
+			</div>
+		</div>
+	</main>
+</Layout>

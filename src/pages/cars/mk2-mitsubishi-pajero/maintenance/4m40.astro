@@ -9,6 +9,7 @@ import MaintenanceCard from "@components/MaintenanceCard.astro";
 import type { MaintenanceItems } from "@/maintenance";
 import InlineDef from "@components/InlineDef.astro";
 import ConditionalRender from "@components/ConditionalRender.astro";
+import BlockDef from "@components/BlockDef.astro";
 
 const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 ---
@@ -28,6 +29,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 					<li><a class="text-blue-600" href="#fluids">Fluids</a></li>
 					<li><a class="text-blue-600" href="#filters">Filters</a></li>
 					<li><a class="text-blue-600" href="#belts">Belts</a></li>
+					<li><a class="text-blue-600" href="#hoses">Hoses</a></li>
 				</ul>
 			</div>
 		</div>
@@ -113,6 +115,27 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 							</ConditionalRender>
 
 							<InlineDef title="Quantity">{belt.quantity}</InlineDef>
+						</div>
+					</MaintenanceCard>
+				))}
+			</div>
+		</div>
+
+		<div class="my-4 lg:mx-8" id="hoses">
+			<h2 class="text-3xl">Hoses</h2>
+
+			<div class="flex flex-wrap flex-row">
+				{maintenance.hoses.map(hose => (
+					<MaintenanceCard
+						title={hose.name}
+						pills={[]}
+						partLinks={hose["part-links"] ?? []}
+						notes={null}
+					>
+						<div class="text-gray-600 text-sm">
+							<BlockDef title="Size">{hose["size-mm"]} mm</BlockDef>
+							<BlockDef title="Length">{hose["length-inches"]} in</BlockDef>
+							<BlockDef title="Quantity">{hose.quantity}</BlockDef>
 						</div>
 					</MaintenanceCard>
 				))}

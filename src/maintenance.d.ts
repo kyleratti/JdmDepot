@@ -26,6 +26,12 @@ export type MaintenanceItems = {
 		["manufacturer-part-number"]: string;
 		quantity: number;
 	}[];
+	hoses: {
+		name: string;
+		["size-mm"]: number;
+		["length-inches"]: number;
+		quantity: number;
+	}[];
 };
 
 declare module "maintenance*.yml" {

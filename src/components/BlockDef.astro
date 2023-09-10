@@ -1,0 +1,11 @@
+---
+import InlineDef from "./InlineDef.astro";
+export interface Props {
+	title: string;
+}
+---
+<div>
+	<InlineDef title={Astro.props.title}>
+		<slot />
+	</InlineDef>
+</div>

@@ -65,3 +65,8 @@ belts:
   - name: Accessory Belt
     manufacturer-part-number: 6219MC
     quantity: 2
+hoses:
+  - name: Soft Fuel Lines (at filter)
+    size-mm: 8
+    length-inches: 12
+    quantity: 2

@@ -11,9 +11,6 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.5.x]
     outputs:
       TAG_NAME: ${{ steps.release_export.outputs.TAG_NAME }}
       FILE_NAME: ${{ steps.release_export.outputs.FILE_NAME }}
@@ -23,22 +20,31 @@ jobs:
           fetch-depth: '0' # Load entire history
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.5.x
       - run: npm ci
         working-directory: ./src
       - run: npm run build
         working-directory: ./src
       - name: Release
+        id: release-app
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: |
+          npx semantic-release
+          tail $GITHUB_OUTPUT
+      - name: Validate release
+        env:
+          RELEASE_SUCCESS: ${{ steps.release-app.outputs.RELEASE_SUCCESS }}
+        run: |
+          [ "$RELEASE_SUCCESS" = "true" ] && exit 0 || exit 1
+      - id: release_export
+        run: |
+          echo TAG_NAME=v${{ steps.release-app.outputs.RELEASE_VERSION_NUMBER }} >> $GITHUB_OUTPUT
+          echo FILE_NAME=jdmdepot-v${{ steps.release-app.outputs.RELEASE_VERSION_NUMBER }}.tar.gz >> $GITHUB_OUTPUT
+          tail $GITHUB_OUTPUT
   deploy:
     needs: release
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: production
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -82,7 +88,5 @@ jobs:
 
             ln -s "${{ secrets.DEPLOY_APPSETTINGS_PATH }}" "${{ secrets.DEPLOY_DIRECTORY }}/${{ needs.release.outputs.TAG_NAME }}/"
 
-            sudo systemctl stop jdmdepot.service
             rm "${{ secrets.DEPLOY_DIRECTORY }}/latest" || true
             ln -s "${{ secrets.DEPLOY_DIRECTORY }}/${{ needs.release.outputs.TAG_NAME}}/" "${{ secrets.DEPLOY_DIRECTORY }}/latest"
-            sudo systemctl start jdmdepot.service

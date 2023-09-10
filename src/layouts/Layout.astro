@@ -22,11 +22,11 @@ const { title, metaTags } = Astro.props;
 	</head>
 	<body>
 	<header class="bg-red-400 px-4 lg:px-8 lg:py-4 drop-shadow-xl mb-8">
-		<a href="/">
-			<img class="max-w-[120px] inline-block" src="/assets/img/logo.svg" alt="JDM Depot Logo" />
-		</a>
+		<div class="flex justify-center align-center p-2">
+				<img class="max-w-[120px] h-auto" src="/assets/img/logo.svg" alt="JDM Depot Logo" />
+		</div>
 
-		<div class="ml-8 inline-block">
+		<div class="flex justify-center pb-2">
 			<Navigation />
 		</div>
 	</header>

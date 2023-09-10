@@ -1,3 +1,11 @@
+# [2.4.0](https://github.com/kyleratti/JdmDepot/compare/v2.3.0...v2.4.0) (2023-09-10)
+
+
+### Features
+
+* add meta descriptions ([e82981b](https://github.com/kyleratti/JdmDepot/commit/e82981beeba719e51b7a1fac43552e97e5906112))
+* icon ([9c09c74](https://github.com/kyleratti/JdmDepot/commit/9c09c7442631c2585d153a8a160fef738d4b01b0))
+
 # [2.3.0](https://github.com/kyleratti/JdmDepot/compare/v2.2.0...v2.3.0) (2023-09-10)
 
 

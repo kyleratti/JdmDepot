@@ -29,7 +29,7 @@ export interface Props {
 		<div class="text-sm text-gray-600 flex flex-wrap flex-col justify-around p-2">
 			<slot />
 
-			<ConditionalRender render={Astro.props.partLinks.length > 0}>
+			<ConditionalRender condition={Astro.props.partLinks.length > 0}>
 				<div>
 					<InlineDef title="Part Links:">
 						<ul class="flex flex-wrap flex-col list-disc">
@@ -41,10 +41,10 @@ export interface Props {
 				</div>
 			</ConditionalRender>
 
-			<ConditionalRender render={(Astro.props.notes ?? "").length > 0}>
+			<ConditionalRender condition={(Astro.props.notes ?? "").length > 0}>
 				<div>
 					<InlineDef title="Note:">
-						<span set:html={parse(Astro.props.notes ?? "")}></span>
+						<div set:html={parse(Astro.props.notes ?? "")}></div>
 					</InlineDef>
 				</div>
 			</ConditionalRender>

@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/kyleratti/JdmDepot/compare/v2.0.0...v2.1.0) (2023-09-10)
+
+
+### Features
+
+* ci/cd testing ([f7b25df](https://github.com/kyleratti/JdmDepot/commit/f7b25dfaf06428fffdefe4da6430708fbcdedcdb))
+
 # [2.0.0](https://github.com/kyleratti/JdmDepot/compare/v1.1.1...v2.0.0) (2023-09-10)
 
 

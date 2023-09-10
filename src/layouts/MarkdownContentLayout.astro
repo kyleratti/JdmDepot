@@ -30,7 +30,7 @@ const { frontmatter } = Astro.props;
 	}
 </style>
 
-<Layout title={frontmatter.title}>
+<Layout title={frontmatter.title} metaTags={frontmatter?.metaTags}>
 	<main class="w-1/2 m-auto">
 		<slot />
 	</main>

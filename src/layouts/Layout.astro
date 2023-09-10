@@ -16,16 +16,19 @@ const { title, metaTags } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content={metaTags?.description ?? ""} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/assets/img/logo-iconoly.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - JDM Depot</title>
 	</head>
 	<body>
-	<header class="bg-red-400 px-4 py-2 lg:px-8 lg:py-4 drop-shadow-xl mb-8">
-		<span class="font-bold mr-10">
-			JDM Depot
-		</span>
-		<Navigation />
+	<header class="bg-red-400 px-4 lg:px-8 lg:py-4 drop-shadow-xl mb-8">
+		<a href="/">
+			<img class="max-w-[120px] inline-block" src="/assets/img/logo.svg" alt="JDM Depot Logo" />
+		</a>
+
+		<div class="ml-8 inline-block">
+			<Navigation />
+		</div>
 	</header>
 
 	<div class="container m-auto">

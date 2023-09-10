@@ -1,0 +1,37 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+<style is:global>
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	@layer base {
+		main p {
+			@apply my-4;
+		}
+
+		main a {
+			@apply text-blue-600;
+		}
+
+		main a:hover {
+			@apply underline;
+		}
+
+		main ul {
+			@apply list-disc;
+		}
+
+		main ul li {
+			@apply mx-8;
+		}
+	}
+</style>
+
+<Layout title={frontmatter.title}>
+	<main class="w-1/2 m-auto">
+		<slot />
+	</main>
+</Layout>

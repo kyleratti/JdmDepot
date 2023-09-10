@@ -1,3 +1,17 @@
+# [2.2.0](https://github.com/kyleratti/JdmDepot/compare/v2.1.0...v2.2.0) (2023-09-10)
+
+
+### Bug Fixes
+
+* include part links and notes ([a935eb6](https://github.com/kyleratti/JdmDepot/commit/a935eb6da658b30a8ce2c9a0ed909286a15f9006))
+* layout for MK2 Pajero ([6fb498b](https://github.com/kyleratti/JdmDepot/commit/6fb498b6c60c03659e7e23e5811ed214e8f31de0))
+
+
+### Features
+
+* contact us page ([33f6f2b](https://github.com/kyleratti/JdmDepot/commit/33f6f2b833053792208609a98f02f6fff7d682fe))
+* proper index page ([c0f931e](https://github.com/kyleratti/JdmDepot/commit/c0f931e08ce7320bcf34b7671312468efaf1f8e3))
+
 # [2.1.0](https://github.com/kyleratti/JdmDepot/compare/v2.0.0...v2.1.0) (2023-09-10)
 
 

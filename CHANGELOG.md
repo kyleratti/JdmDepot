@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/kyleratti/JdmDepot/compare/v2.2.0...v2.3.0) (2023-09-10)
+
+
+### Features
+
+* add belts for MK2 Pajero 4M40 ([4a2b1c2](https://github.com/kyleratti/JdmDepot/commit/4a2b1c20700dbb4d35d777b1aace950b6feca20e))
+
 # [2.2.0](https://github.com/kyleratti/JdmDepot/compare/v2.1.0...v2.2.0) (2023-09-10)
 
 

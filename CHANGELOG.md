@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/kyleratti/JdmDepot/compare/v2.4.0...v2.5.0) (2023-09-10)
+
+
+### Features
+
+* centered icon ([bdd5180](https://github.com/kyleratti/JdmDepot/commit/bdd5180335bd4c7a177f8645e22088491023c1a9))
+
 # [2.4.0](https://github.com/kyleratti/JdmDepot/compare/v2.3.0...v2.4.0) (2023-09-10)
 
 

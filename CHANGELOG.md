@@ -1,3 +1,10 @@
+## [2.6.1](https://github.com/kyleratti/JdmDepot/compare/v2.6.0...v2.6.1) (2023-09-23)
+
+
+### Bug Fixes
+
+* tweak styles ([e08e189](https://github.com/kyleratti/JdmDepot/commit/e08e1897ec4bd4e639f9c14cc4fb4f45873611a5))
+
 # [2.6.0](https://github.com/kyleratti/JdmDepot/compare/v2.5.0...v2.6.0) (2023-09-23)
 
 

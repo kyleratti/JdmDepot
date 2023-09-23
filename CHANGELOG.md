@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/kyleratti/JdmDepot/compare/v2.5.0...v2.6.0) (2023-09-23)
+
+
+### Features
+
+* add replacement parts for 4m40 ([7be27af](https://github.com/kyleratti/JdmDepot/commit/7be27afae7075698ff53550626752cb120065dda))
+* include category with replacement part ([b8950fa](https://github.com/kyleratti/JdmDepot/commit/b8950fa849f0feb89b82fb3be54e47f691df4cc3))
+* style tweaks ([68910c6](https://github.com/kyleratti/JdmDepot/commit/68910c665fd23938ebd933bee8370cf186771b6d))
+
 # [2.5.0](https://github.com/kyleratti/JdmDepot/compare/v2.4.0...v2.5.0) (2023-09-10)
 
 

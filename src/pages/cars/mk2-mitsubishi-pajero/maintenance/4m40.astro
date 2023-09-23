@@ -9,8 +9,19 @@ import type { MaintenanceItems } from "@/maintenance";
 import InlineDef from "@components/InlineDef.astro";
 import ConditionalRender from "@components/ConditionalRender.astro";
 import BlockDef from "@components/BlockDef.astro";
+import { exhaustivePatternMatch } from "@util/patternMatchUtil";
+import { ReplacementPartCategory } from "@/maintenance";
 
 const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
+
+const categoryToDisplayValue = (category: ReplacementPartCategory) => {
+	switch (category) {
+		case "cooling":
+			return "Cooling";
+		default:
+			return exhaustivePatternMatch(category);
+	}
+}
 ---
 <style>
 	.maintenance-card-container {
@@ -163,7 +174,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 				{maintenance["replacement-parts"].map(part => (
 					<MaintenanceCard
 						title={part.name}
-						pills={[]}
+						pills={[categoryToDisplayValue(part.category)]}
 						partLinks={part["part-links"] ?? []}
 						notes={part.notes ?? null}
 					>

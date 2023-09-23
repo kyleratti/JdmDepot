@@ -4,6 +4,9 @@ export type PartLink =
 	| { kind: "rockauto"; ["part-number"]: string; }
 	| { kind: "napa"; ["part-number"]: string; url: string; }
 
+export type ReplacementPartCategory =
+	| "cooling";
+
 export type MaintenanceItems = {
 	["car-id"]: string;
 	["engine-id"]: string;
@@ -35,7 +38,7 @@ export type MaintenanceItems = {
 	}[];
 	["replacement-parts"]: {
 		name: string;
-		category: "cooling";
+		category: ReplacementPartCategory;
 		quantity: number;
 		["manufacturer-part-number"]: string;
 		["alternative-part-numbers"]: { text: string; }[] | undefined;

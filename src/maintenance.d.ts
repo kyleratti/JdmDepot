@@ -2,6 +2,7 @@ export type PartLink =
 	| { kind: "amazon"; url: string; }
 	| { kind: "advance-auto"; ["part-number"]: string; }
 	| { kind: "rockauto"; ["part-number"]: string; }
+	| { kind: "napa"; ["part-number"]: string; url: string; }
 
 export type MaintenanceItems = {
 	["car-id"]: string;
@@ -31,6 +32,15 @@ export type MaintenanceItems = {
 		["size-mm"]: number;
 		["length-inches"]: number;
 		quantity: number;
+	}[];
+	["replacement-parts"]: {
+		name: string;
+		category: "cooling";
+		quantity: number;
+		["manufacturer-part-number"]: string;
+		["alternative-part-numbers"]: { text: string; }[] | undefined;
+		["part-links"]: PartLink[] | undefined;
+		notes: string | undefined;
 	}[];
 };
 

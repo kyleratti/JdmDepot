@@ -70,3 +70,13 @@ hoses:
     size-mm: 8
     length-inches: 12
     quantity: 2
+replacement-parts:
+  - name: Radiator Cap
+    category: cooling
+    manufacturer-part-number: MB660667
+    alternative-part-numbers:
+      - text: BK 7031728
+    part-links:
+      - kind: napa
+        part-number: BK 7031728
+        url: https://www.napaonline.com/en/p/BK_7031728

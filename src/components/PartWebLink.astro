@@ -20,8 +20,10 @@ const [link, text] = (() => {
 			return [item.url, "Amazon"];
 		case "rockauto":
 			return [`https://www.rockauto.com/en/moreinfo.php?pk=${item["part-number"]}`, "RockAuto"];
+		case "napa":
+			return [item.url, "NAPA"];
 		default:
-			exhaustivePatternMatch(kind);
+			exhaustivePatternMatch(item.kind);
 	}
 })();
 ---

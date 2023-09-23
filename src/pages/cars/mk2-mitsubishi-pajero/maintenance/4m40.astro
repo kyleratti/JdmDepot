@@ -35,6 +35,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 					<li><a class="text-blue-600" href="#filters">Filters</a></li>
 					<li><a class="text-blue-600" href="#belts">Belts</a></li>
 					<li><a class="text-blue-600" href="#hoses">Hoses</a></li>
+					<li><a class="text-blue-600" href="#replacement-parts">Replacement Parts</a></li>
 				</ul>
 			</div>
 		</div>
@@ -141,6 +142,42 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 							<BlockDef title="Size">{hose["size-mm"]} mm</BlockDef>
 							<BlockDef title="Length">{hose["length-inches"]} in</BlockDef>
 							<BlockDef title="Quantity">{hose.quantity}</BlockDef>
+						</div>
+					</MaintenanceCard>
+				))}
+			</div>
+		</div>
+
+		<div class="my-4 lg:mx-8" id="replacement-parts">
+			<h2 class="text-3xl">Replacement Parts</h2>
+
+			<div class="flex flex-wrap flex-row">
+				{maintenance["replacement-parts"].map(part => (
+					<MaintenanceCard
+						title={part.name}
+						pills={[]}
+						partLinks={part["part-links"] ?? []}
+						notes={part.notes ?? null}
+					>
+						<div class="text-gray-600 text-sm">
+							<ConditionalRender condition={(part["manufacturer-part-number"] ?? "").length > 0}>
+								{(<div>
+									<InlineDef title="Manufacturer Part #">
+										{part["manufacturer-part-number"] ?? ""}
+									</InlineDef>
+								</div>)}
+							</ConditionalRender>
+							<ConditionalRender condition={(part["alternative-part-numbers"] ?? "").length > 0}>
+								{<div>
+									<InlineDef title="Alt. Part #s">
+										<ul class="list-disc">
+											{(part["alternative-part-numbers"] ?? []).map(altPartNum =>
+												<li class="mx-8">{altPartNum.text}</li>
+											)}
+										</ul>
+									</InlineDef>
+								</div>}
+							</ConditionalRender>
 						</div>
 					</MaintenanceCard>
 				))}

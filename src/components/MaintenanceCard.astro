@@ -17,7 +17,7 @@ export interface Props {
 		<div class="text-sm bg-red-300 group-hover:bg-red-400 drop-shadow-md mb-1 p-1 text-center font-medium">
 			{Astro.props.title}
 			<ConditionalRender condition={Astro.props.pills.length > 0}>
-				<div class="my-1 text-gray-600 font-normal">
+				<div class="my-1 text-gray-600 font-normal group-hover:text-gray-900">
 					{Astro.props.pills.map(pill => (
 							<MaintenanceCardPill>
 								{pill}

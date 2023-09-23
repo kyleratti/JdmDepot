@@ -1,5 +1,4 @@
 ---
-import { parse } from "marked";
 import Layout from "@layouts/Layout.astro";
 import rawMaintenanceItemsYml from "@data/mk2-mitsubishi-pajero/maintenance-4m40.yml";
 
@@ -13,6 +12,15 @@ import BlockDef from "@components/BlockDef.astro";
 
 const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 ---
+<style>
+	.maintenance-card-container {
+		@apply flex;
+		@apply flex-wrap;
+		@apply flex-row;
+		@apply justify-center;
+		@apply lg:justify-normal;
+	}
+</style>
 <Layout
 	title="4M40 Maintenance - MK2 Mitsubishi Pajero"
 	metaTags={{
@@ -43,7 +51,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 		<div class="my-4 lg:mx-8" id="fluids">
 			<h2 class="text-3xl">Fluids</h2>
 
-			<div class="flex flex-wrap flex-row">
+			<div class="maintenance-card-container">
 				{maintenance.fluids.map(fluid => (
 					<MaintenanceCard
 						title={fluid.name}
@@ -67,7 +75,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 		<div class="my-4 lg:mx-8" id="filters">
 			<h2 class="text-3xl">Filters</h2>
 
-			<div class="flex flex-wrap flex-row">
+			<div class="maintenance-card-container">
 				{maintenance.filters.map(filter => (
 					<MaintenanceCard
 						title={filter.name}
@@ -103,7 +111,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 		<div class="my-4 lg:mx-8" id="belts">
 			<h2 class="text-3xl">Belts</h2>
 
-			<div class="flex flex-wrap flex-row">
+			<div class="maintenance-card-container">
 				{maintenance.belts.map(belt => (
 					<MaintenanceCard
 						title={belt.name}
@@ -130,7 +138,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 		<div class="my-4 lg:mx-8" id="hoses">
 			<h2 class="text-3xl">Hoses</h2>
 
-			<div class="flex flex-wrap flex-row">
+			<div class="maintenance-card-container">
 				{maintenance.hoses.map(hose => (
 					<MaintenanceCard
 						title={hose.name}
@@ -151,7 +159,7 @@ const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
 		<div class="my-4 lg:mx-8" id="replacement-parts">
 			<h2 class="text-3xl">Replacement Parts</h2>
 
-			<div class="flex flex-wrap flex-row">
+			<div class="maintenance-card-container">
 				{maintenance["replacement-parts"].map(part => (
 					<MaintenanceCard
 						title={part.name}

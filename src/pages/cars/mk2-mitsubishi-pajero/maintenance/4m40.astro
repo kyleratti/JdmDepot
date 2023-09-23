@@ -24,6 +24,11 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 }
 ---
 <style>
+	.maintenance-section {
+		@apply my-8 lg:my-10;
+		@apply lg:mx-8;
+	}
+
 	.maintenance-card-container {
 		@apply flex;
 		@apply flex-wrap;
@@ -59,7 +64,7 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 			</div>
 		</div>
 
-		<div class="my-4 lg:mx-8" id="fluids">
+		<div class="maintenance-section" id="fluids">
 			<h2 class="text-3xl">Fluids</h2>
 
 			<div class="maintenance-card-container">
@@ -83,7 +88,7 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 			</div>
 		</div>
 
-		<div class="my-4 lg:mx-8" id="filters">
+		<div class="maintenance-section" id="filters">
 			<h2 class="text-3xl">Filters</h2>
 
 			<div class="maintenance-card-container">
@@ -119,7 +124,7 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 			</div>
 		</div>
 
-		<div class="my-4 lg:mx-8" id="belts">
+		<div class="maintenance-section" id="belts">
 			<h2 class="text-3xl">Belts</h2>
 
 			<div class="maintenance-card-container">
@@ -146,7 +151,7 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 			</div>
 		</div>
 
-		<div class="my-4 lg:mx-8" id="hoses">
+		<div class="maintenance-section" id="hoses">
 			<h2 class="text-3xl">Hoses</h2>
 
 			<div class="maintenance-card-container">
@@ -167,7 +172,7 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 			</div>
 		</div>
 
-		<div class="my-4 lg:mx-8" id="replacement-parts">
+		<div class="maintenance-section" id="replacement-parts">
 			<h2 class="text-3xl">Replacement Parts</h2>
 
 			<div class="maintenance-card-container">

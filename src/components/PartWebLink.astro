@@ -22,6 +22,8 @@ const [link, text] = (() => {
 			return [`https://www.rockauto.com/en/moreinfo.php?pk=${item["part-number"]}`, "RockAuto"];
 		case "napa":
 			return [item.url, "NAPA"];
+		case "fcp-euro":
+			return [item.url, "FCP Euro"];
 		default:
 			exhaustivePatternMatch(item.kind);
 	}

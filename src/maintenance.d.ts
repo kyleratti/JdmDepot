@@ -3,6 +3,7 @@ export type PartLink =
 	| { kind: "advance-auto"; ["part-number"]: string; }
 	| { kind: "rockauto"; ["part-number"]: string; }
 	| { kind: "napa"; ["part-number"]: string; url: string; }
+	| { kind: "fcp-euro"; ["part-number"]: string; url: string; }
 
 export type ReplacementPartCategory =
 	| "cooling";

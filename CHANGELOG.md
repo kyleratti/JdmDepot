@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/kyleratti/JdmDepot/compare/v2.6.1...v2.7.0) (2023-09-28)
+
+
+### Features
+
+* add pajero reference PDFs ([610464b](https://github.com/kyleratti/JdmDepot/commit/610464bb3da2bc4ca69f9ce8ae54cd445bb7e23b))
+
 ## [2.6.1](https://github.com/kyleratti/JdmDepot/compare/v2.6.0...v2.6.1) (2023-09-23)
 
 

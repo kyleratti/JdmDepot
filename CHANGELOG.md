@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/kyleratti/JdmDepot/compare/v2.7.1...v2.8.0) (2023-09-28)
+
+
+### Features
+
+* add Pajero coolant at FCP Euro ([e4490e9](https://github.com/kyleratti/JdmDepot/commit/e4490e9a0e7f2c1640f234568aecb1aa1fd74caf))
+
 ## [2.7.1](https://github.com/kyleratti/JdmDepot/compare/v2.7.0...v2.7.1) (2023-09-28)
 
 

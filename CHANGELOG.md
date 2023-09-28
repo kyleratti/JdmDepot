@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/kyleratti/JdmDepot/compare/v2.7.0...v2.7.1) (2023-09-28)
+
+
+### Bug Fixes
+
+* don't open maintenance page in new tab ([e92938b](https://github.com/kyleratti/JdmDepot/commit/e92938b4ab9c92bbc7fd6fbfa2338e8d948e63bb))
+
 # [2.7.0](https://github.com/kyleratti/JdmDepot/compare/v2.6.1...v2.7.0) (2023-09-28)
 
 

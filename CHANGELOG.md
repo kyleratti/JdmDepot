@@ -1,3 +1,10 @@
+## [2.8.1](https://github.com/kyleratti/JdmDepot/compare/v2.8.0...v2.8.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* update dependencies ([1f3df94](https://github.com/kyleratti/JdmDepot/commit/1f3df94779c443e1616cb46ff1134c68656f2a98))
+
 # [2.8.0](https://github.com/kyleratti/JdmDepot/compare/v2.7.1...v2.8.0) (2023-09-28)
 
 

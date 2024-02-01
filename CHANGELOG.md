@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/kyleratti/JdmDepot/compare/v2.8.1...v2.9.0) (2024-02-01)
+
+
+### Features
+
+* add contributors to home page ([e60f30b](https://github.com/kyleratti/JdmDepot/commit/e60f30b3bab7f34e497fe8c618b0fab438d95dc0))
+
 ## [2.8.1](https://github.com/kyleratti/JdmDepot/compare/v2.8.0...v2.8.1) (2023-11-29)
 
 

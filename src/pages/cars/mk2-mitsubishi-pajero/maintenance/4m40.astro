@@ -4,15 +4,12 @@ import rawMaintenanceItemsYml from "@data/mk2-mitsubishi-pajero/maintenance-4m40
 
 
 import { quartsToLiters } from "@util/math";
-import MaintenanceCard from "@components/MaintenanceCard.astro";
-import type { MaintenanceItems } from "@/maintenance";
-import InlineDef from "@components/InlineDef.astro";
-import ConditionalRender from "@components/ConditionalRender.astro";
-import BlockDef from "@components/BlockDef.astro";
+import type { MaintenanceItems, ReplacementPartCategory } from "@/maintenance";
 import { exhaustivePatternMatch } from "@util/patternMatchUtil";
-import { ReplacementPartCategory } from "@/maintenance";
+import PartWebLink from "../../../../components/PartWebLink.astro";
+import { parse } from "marked";
 
-const maintenance: MaintenanceItems = rawMaintenanceItemsYml;
+const maintenance: MaintenanceItems = rawMaintenanceItemsYml as unknown as MaintenanceItems;
 
 const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 	switch (category) {
@@ -22,6 +19,11 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 			return exhaustivePatternMatch(category);
 	}
 }
+
+const hasNotes = {
+	filters: maintenance.filters.some(x => (x.notes?.length ?? 0) > 0),
+	replacementParts: maintenance["replacement-parts"].some(x => (x.notes?.length ?? 0) > 0),
+};
 ---
 <style>
 	.maintenance-section {
@@ -29,12 +31,39 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 		@apply lg:mx-8;
 	}
 
-	.maintenance-card-container {
-		@apply flex;
-		@apply flex-wrap;
-		@apply flex-row;
-		@apply justify-center;
-		@apply lg:justify-normal;
+	.maintenance-table-container {
+		@apply my-4;
+		@apply flex justify-center;
+	}
+
+	.maintenance-table {
+		@apply table-fixed;
+		@apply bg-white;
+		@apply shadow-lg;
+
+		th {
+			@apply p-4;
+			@apply bg-red-300;
+		}
+
+		tr:hover {
+			@apply bg-gray-100;
+		}
+
+		td {
+			@apply px-2;
+			@apply py-4;
+			@apply border;
+		}
+
+		ul > li {
+			@apply list-disc;
+			@apply ml-4
+		}
+	}
+
+	.maintenance-table-sm {
+		@apply overflow-x-auto;
 	}
 </style>
 <Layout
@@ -44,7 +73,7 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 	}}
 >
 	<main class="md:container mx-2 lg:mx-auto">
-		<div class="lg:w-1/2 m-auto">
+		<div class="lg:w-1/2 m-auto sm:mb-8">
 			<div class="text-xl mb-4">MK2 Mitsubishi Pajero</div>
 			<h1 class="text-4xl mb-4">4M40 Maintenance</h1>
 
@@ -67,144 +96,183 @@ const categoryToDisplayValue = (category: ReplacementPartCategory) => {
 		<div class="maintenance-section" id="fluids">
 			<h2 class="text-3xl">Fluids</h2>
 
-			<div class="maintenance-card-container">
-				{maintenance.fluids.map(fluid => (
-					<MaintenanceCard
-						title={fluid.name}
-						pills={[
-							`${fluid["capacity-quarts"]} Quarts`,
-							`${quartsToLiters(fluid["capacity-quarts"]).toFixed(1)} Liters`,
-						]}
-						partLinks={fluid["part-links"] ?? []}
-						notes={fluid.notes ?? null}
-					>
-						<div class="text-gray-600 text-sm">
-							<InlineDef title="Specification">
-								{fluid.specification}
-							</InlineDef>
-						</div>
-					</MaintenanceCard>
-				))}
+			<div class="maintenance-table-container">
+				<table class="maintenance-table sm:maintenance-table-sm">
+					<thead>
+					<tr>
+						<th>Fluid</th>
+						<th>Specification</th>
+						<th>Capacity<br/>(quarts)</th>
+						<th>Capacity<br/>(liters)</th>
+						<th>Part Links</th>
+						<th>Notes</th>
+					</tr>
+					</thead>
+					<tbody>
+					{maintenance.fluids.map(fluid => (
+						<tr>
+							<td class="w-2/12">{fluid.name}</td>
+							<td class="w-2/12">{fluid.specification}</td>
+							<td class="w-1/12">{fluid["capacity-quarts"].toFixed(1)} Quarts</td>
+							<td class="w-1/12">{quartsToLiters(fluid["capacity-quarts"]).toFixed(1)} Liters</td>
+							<td class="w-2/12">
+								{fluid["part-links"] && <ul>
+									{fluid["part-links"].map(partLink => (
+										<li>
+											<PartWebLink item={partLink} />
+										</li>
+									))}
+								</ul>}
+							</td>
+							<td class="w-4/12">
+								<div set:html={parse(fluid.notes ?? "")}></div>
+							</td>
+						</tr>))}
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 		<div class="maintenance-section" id="filters">
 			<h2 class="text-3xl">Filters</h2>
 
-			<div class="maintenance-card-container">
-				{maintenance.filters.map(filter => (
-					<MaintenanceCard
-						title={filter.name}
-						pills={[]}
-						partLinks={filter["part-links"] ?? []}
-						notes={filter.notes ?? null}
-					>
-						<div class="text-gray-600 text-sm">
-							<ConditionalRender condition={(filter["manufacturer-part-number"] ?? "").length > 0}>
-								{(<div>
-									<InlineDef title="Manufacturer Part #">
-										{filter["manufacturer-part-number"] ?? ""}
-									</InlineDef>
-								</div>)}
-							</ConditionalRender>
-							<ConditionalRender condition={(filter["alternative-part-numbers"] ?? "").length > 0}>
-								{<div>
-									<InlineDef title="Alt. Part #s">
-										<ul class="list-disc">
-											{(filter["alternative-part-numbers"] ?? []).map(altPartNum =>
-												<li class="mx-8">{altPartNum.text}</li>
-											)}
+			<div class="maintenance-table-container">
+				<table class="maintenance-table sm:maintenance-table-sm">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Manufacturer <span class="whitespace-nowrap">Part #</span></th>
+						<th>Alt <span class="whitespace-nowrap">Part #</span></th>
+						<th>Part Links</th>
+						{hasNotes["filters"] && <th>Notes</th>}
+					</tr>
+					</thead>
+					<tbody>
+					{maintenance.filters.map(filter => (
+						<tr>
+							<td class="w-2/12">{filter.name}</td>
+							<td class="w-2/12">{filter["manufacturer-part-number"]}</td>
+							<td class="w-2/12">
+								{(filter["alternative-part-numbers"] ?? []).map(altPartNum => (
+										<ul>
+											<li class="whitespace-nowrap">{altPartNum.text}</li>
 										</ul>
-									</InlineDef>
-								</div>}
-							</ConditionalRender>
-						</div>
-					</MaintenanceCard>
-				))}
+									))}
+							</td>
+							<td class="w-1/12">
+								{filter["part-links"] && <ul>
+									{filter["part-links"].map(partLink => (
+										<li>
+											<PartWebLink item={partLink} />
+										</li>
+									))}
+								</ul>}
+							</td>
+							<td class="w-5/12">
+								<div set:html={parse(filter.notes ?? "")}></div>
+							</td>
+						</tr>))}
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 		<div class="maintenance-section" id="belts">
 			<h2 class="text-3xl">Belts</h2>
 
-			<div class="maintenance-card-container">
-				{maintenance.belts.map(belt => (
-					<MaintenanceCard
-						title={belt.name}
-						pills={[]}
-						partLinks={belt["part-links"] ?? []}
-						notes={null}
-					>
-						<div class="text-gray-600 text-sm">
-							<ConditionalRender condition={(belt["manufacturer-part-number"] ?? "").length > 0}>
-								{(<div>
-									<InlineDef title="Manufacturer Part #">
-										{belt["manufacturer-part-number"] ?? ""}
-									</InlineDef>
-								</div>)}
-							</ConditionalRender>
-
-							<InlineDef title="Quantity">{belt.quantity}</InlineDef>
-						</div>
-					</MaintenanceCard>
-				))}
+			<div class="maintenance-table-container">
+				<table class="maintenance-table sm:maintenance-table-sm">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Manufacturer <span class="whitespace-nowrap">Part #</span></th>
+						<th>Quantity</th>
+					</tr>
+					</thead>
+					<tbody>
+						{maintenance.belts.map(belt => (
+							<tr>
+								<td class="w-6/12">{belt.name}</td>
+								<td class="w-4/12">{belt["manufacturer-part-number"]}</td>
+								<td class="w-2/12">{belt.quantity}</td>
+							</tr>))}
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 		<div class="maintenance-section" id="hoses">
 			<h2 class="text-3xl">Hoses</h2>
 
-			<div class="maintenance-card-container">
-				{maintenance.hoses.map(hose => (
-					<MaintenanceCard
-						title={hose.name}
-						pills={[]}
-						partLinks={hose["part-links"] ?? []}
-						notes={null}
-					>
-						<div class="text-gray-600 text-sm">
-							<BlockDef title="Size">{hose["size-mm"]} mm</BlockDef>
-							<BlockDef title="Length">{hose["length-inches"]} in</BlockDef>
-							<BlockDef title="Quantity">{hose.quantity}</BlockDef>
-						</div>
-					</MaintenanceCard>
-				))}
+			<div class="maintenance-table-container">
+				<table class="maintenance-table sm:maintenance-table-sm">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Size (millimeters)</th>
+						<th>Length (inches)</th>
+						<th>Quantity</th>
+					</tr>
+					</thead>
+					<tbody>
+						{maintenance.hoses.map(hose => (
+							<tr>
+								<td class="w-2/5">{hose.name}</td>
+								<td class="w-1/5">{hose["size-mm"]} mm</td>
+								<td class="w-1/5">{hose["length-inches"]} inches</td>
+								<td class="w-1/5">{hose.quantity}</td>
+							</tr>))}
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 		<div class="maintenance-section" id="replacement-parts">
 			<h2 class="text-3xl">Replacement Parts</h2>
 
-			<div class="maintenance-card-container">
-				{maintenance["replacement-parts"].map(part => (
-					<MaintenanceCard
-						title={part.name}
-						pills={[categoryToDisplayValue(part.category)]}
-						partLinks={part["part-links"] ?? []}
-						notes={part.notes ?? null}
-					>
-						<div class="text-gray-600 text-sm">
-							<ConditionalRender condition={(part["manufacturer-part-number"] ?? "").length > 0}>
-								{(<div>
-									<InlineDef title="Manufacturer Part #">
-										{part["manufacturer-part-number"] ?? ""}
-									</InlineDef>
-								</div>)}
-							</ConditionalRender>
-							<ConditionalRender condition={(part["alternative-part-numbers"] ?? "").length > 0}>
-								{<div>
-									<InlineDef title="Alt. Part #s">
-										<ul class="list-disc">
-											{(part["alternative-part-numbers"] ?? []).map(altPartNum =>
-												<li class="mx-8">{altPartNum.text}</li>
-											)}
+			<div class="maintenance-table-container">
+				<table class="maintenance-table sm:maintenance-table-sm">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Category</th>
+						<th>Manufacturer <span class="whitespace-nowrap">Part #</span></th>
+						<th>Alt. Part #</th>
+						<th>Part Links</th>
+						{hasNotes["replacementParts"] && <th>Notes</th>}
+					</tr>
+					</thead>
+					<tbody>
+					{maintenance["replacement-parts"]
+						.sort((a, b) => a.category.localeCompare(b.category))
+						.map(part => (
+							<tr>
+								<td class="w-2/12">{part.name}</td>
+								<td class="w-1/12">{categoryToDisplayValue(part.category)}</td>
+								<td class="w-2/12">{part["manufacturer-part-number"]}</td>
+								<td class="w-2/12">
+									{(part["alternative-part-numbers"] ?? []).map(altPartNum => (
+										<ul>
+											<li class="whitespace-nowrap">{altPartNum.text}</li>
 										</ul>
-									</InlineDef>
-								</div>}
-							</ConditionalRender>
-						</div>
-					</MaintenanceCard>
-				))}
+									))}
+								</td>
+								<td class="w-1/12">
+									{(part["part-links"] ?? []).map(partLink => (
+										<ul>
+											<li>
+												<PartWebLink item={partLink} />
+											</li>
+										</ul>
+									))}
+								</td>
+								{hasNotes["replacementParts"] && (
+									<td class="w-4/12">
+										<div set:html={parse(part.notes ?? "")}></div>
+									</td>)}
+							</tr>))}
+						</tbody>
+				</table>
 			</div>
 		</div>
 	</main>

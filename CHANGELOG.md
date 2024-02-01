@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/kyleratti/JdmDepot/compare/v2.9.0...v2.9.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* center sections ([1ad769b](https://github.com/kyleratti/JdmDepot/commit/1ad769b4b6a145be407c26a950b0c5521b561c39))
+
 # [2.9.0](https://github.com/kyleratti/JdmDepot/compare/v2.8.1...v2.9.0) (2024-02-01)
 
 

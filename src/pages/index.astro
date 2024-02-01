@@ -1,0 +1,45 @@
+---
+import Layout from "@layouts/Layout.astro";
+import rawMaintenanceItemsYml from "@data/contributors.yml";
+import type { ContributorsFile } from "@/contributors";
+
+const contributorsFile: ContributorsFile = rawMaintenanceItemsYml as unknown as ContributorsFile;
+const { contributors } = contributorsFile;
+---
+
+<style scoped>
+	p {
+		@apply my-4;
+	}
+</style>
+<Layout
+	title="Welcome"
+	metaTags={{
+		description:
+			"A knowledge base for JDM cars that have been imported into the USA. Includes part numbers, state-side parts distributors, repair guides, and more.",
+	}}>
+	<main class="p-4 lg:p-0 lg:w-1/2 m-auto">
+		<p>
+			<b>JDM Depot</b> is an online knowledge base for cars originally produced in the Japanese
+			Domestic Market. This is often referred to as JDM.
+		</p>
+
+		<p>
+			Most of the information here will pertain to vehicle owners who have imported their
+			vehicle from the Japanese Domestic Market into the United States of America.
+		</p>
+
+		{
+			contributors.length > 0 && (
+				<div id="contributors">
+					A big thank you to all contributors to the site!
+					<ul>
+						{contributors.map((contributor) => (
+							<li class="list-disc ml-8">{contributor.name}</li>
+						))}
+					</ul>
+				</div>
+			)
+		}
+	</main>
+</Layout>

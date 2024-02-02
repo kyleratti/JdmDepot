@@ -1,3 +1,10 @@
+## [2.9.2](https://github.com/kyleratti/JdmDepot/compare/v2.9.1...v2.9.2) (2024-02-02)
+
+
+### Bug Fixes
+
+* allow horizontal scroll on medium size screens ([731036a](https://github.com/kyleratti/JdmDepot/commit/731036a75517779bf8664065b05b0425f899f910))
+
 ## [2.9.1](https://github.com/kyleratti/JdmDepot/compare/v2.9.0...v2.9.1) (2024-02-01)
 
 

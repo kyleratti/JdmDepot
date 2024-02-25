@@ -1,3 +1,10 @@
+## [2.9.3](https://github.com/kyleratti/JdmDepot/compare/v2.9.2...v2.9.3) (2024-02-25)
+
+
+### Bug Fixes
+
+* mobile layout fixes ([ab6e84b](https://github.com/kyleratti/JdmDepot/commit/ab6e84b82f0327f27862033e8506a18b0059d24b))
+
 ## [2.9.2](https://github.com/kyleratti/JdmDepot/compare/v2.9.1...v2.9.2) (2024-02-02)
 
 

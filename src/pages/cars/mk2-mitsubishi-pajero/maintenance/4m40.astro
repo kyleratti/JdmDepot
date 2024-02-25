@@ -1,13 +1,12 @@
 ---
-import Layout from "@layouts/Layout.astro";
 import rawMaintenanceItemsYml from "@data/mk2-mitsubishi-pajero/maintenance-4m40.yml";
+import Layout from "@layouts/Layout.astro";
 
-
-import { quartsToLiters } from "@util/math";
 import type { MaintenanceItems, ReplacementPartCategory } from "@/maintenance";
+import { quartsToLiters } from "@util/math";
 import { exhaustivePatternMatch } from "@util/patternMatchUtil";
-import PartWebLink from "../../../../components/PartWebLink.astro";
 import { parse } from "marked";
+import PartWebLink from "../../../../components/PartWebLink.astro";
 
 const maintenance: MaintenanceItems = rawMaintenanceItemsYml as unknown as MaintenanceItems;
 
@@ -37,16 +36,17 @@ const hasNotes = {
 
 	.maintenance-table-container {
 		@apply my-4;
-		@apply flex justify-center;
+		@apply relative;
+		@apply overflow-x-auto;
 	}
 
 	.maintenance-table {
 		@apply table-fixed;
 		@apply bg-white;
 		@apply shadow-lg;
+		@apply mx-auto;
 
 		th {
-			@apply p-4;
 			@apply bg-red-300;
 		}
 
@@ -64,11 +64,6 @@ const hasNotes = {
 			@apply list-disc;
 			@apply ml-4
 		}
-	}
-
-	.maintenance-table-sm,
-	.maintenance-table-md {
-		@apply overflow-x-auto;
 	}
 </style>
 <Layout
@@ -101,26 +96,26 @@ const hasNotes = {
 		<div class="maintenance-section" id="fluids">
 			<h2 class="text-3xl">Fluids</h2>
 
-			<div class="maintenance-table-container">
+			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
-					<thead>
+					<thead class="sticky top-0">
 					<tr>
-						<th>Fluid</th>
-						<th>Specification</th>
-						<th>Capacity<br/>(quarts)</th>
-						<th>Capacity<br/>(liters)</th>
-						<th>Part Links</th>
-						<th>Notes</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Fluid</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-48">Specification</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-24">Capacity<br/>(quarts)</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-24">Capacity<br/>(liters)</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Part Links</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-60">Notes</th>
 					</tr>
 					</thead>
 					<tbody>
 					{maintenance.fluids.map(fluid => (
 						<tr>
-							<td class="w-2/12">{fluid.name}</td>
-							<td class="w-2/12">{fluid.specification}</td>
-							<td class="w-1/12">{fluid["capacity-quarts"].toFixed(1)} Quarts</td>
-							<td class="w-1/12">{quartsToLiters(fluid["capacity-quarts"]).toFixed(1)} Liters</td>
-							<td class="w-2/12">
+							<td>{fluid.name}</td>
+							<td>{fluid.specification}</td>
+							<td>{fluid["capacity-quarts"].toFixed(1)} Quarts</td>
+							<td>{quartsToLiters(fluid["capacity-quarts"]).toFixed(1)} Liters</td>
+							<td>
 								{fluid["part-links"] && <ul>
 									{fluid["part-links"].map(partLink => (
 										<li>
@@ -129,7 +124,7 @@ const hasNotes = {
 									))}
 								</ul>}
 							</td>
-							<td class="w-4/12">
+							<td>
 								<div set:html={parse(fluid.notes ?? "")}></div>
 							</td>
 						</tr>))}
@@ -141,30 +136,30 @@ const hasNotes = {
 		<div class="maintenance-section" id="filters">
 			<h2 class="text-3xl">Filters</h2>
 
-			<div class="maintenance-table-container">
+			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
-					<thead>
+					<thead class="sticky top-0">
 					<tr>
-						<th>Name</th>
-						<th>Manufacturer <span class="whitespace-nowrap">Part #</span></th>
-						<th>Alt <span class="whitespace-nowrap">Part #</span></th>
-						<th>Part Links</th>
-						{hasNotes["filters"] && <th>Notes</th>}
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Name</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Manufacturer <span class="whitespace-nowrap">Part #</span></th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Alt <span class="whitespace-nowrap">Part #</span></th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Part Links</th>
+						{hasNotes["filters"] && <th class="p-1 md:p-2 lg:p-4 min-w-60">Notes</th>}
 					</tr>
 					</thead>
 					<tbody>
 					{maintenance.filters.map(filter => (
 						<tr>
-							<td class="w-2/12">{filter.name}</td>
-							<td class="w-2/12">{filter["manufacturer-part-number"]}</td>
-							<td class="w-2/12">
+							<td>{filter.name}</td>
+							<td>{filter["manufacturer-part-number"]}</td>
+							<td>
 								{(filter["alternative-part-numbers"] ?? []).map(altPartNum => (
 										<ul>
 											<li class="whitespace-nowrap">{altPartNum.text}</li>
 										</ul>
 									))}
 							</td>
-							<td class="w-1/12">
+							<td>
 								{filter["part-links"] && <ul>
 									{filter["part-links"].map(partLink => (
 										<li>
@@ -173,7 +168,7 @@ const hasNotes = {
 									))}
 								</ul>}
 							</td>
-							<td class="w-5/12">
+							<td>
 								<div set:html={parse(filter.notes ?? "")}></div>
 							</td>
 						</tr>))}
@@ -185,21 +180,21 @@ const hasNotes = {
 		<div class="maintenance-section" id="belts">
 			<h2 class="text-3xl">Belts</h2>
 
-			<div class="maintenance-table-container">
+			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
-					<thead>
+					<thead class="sticky top-0">
 					<tr>
-						<th>Name</th>
-						<th>Manufacturer <span class="whitespace-nowrap">Part #</span></th>
-						<th>Quantity</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Name</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Manufacturer <span class="whitespace-nowrap">Part #</span></th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-24">Quantity</th>
 					</tr>
 					</thead>
 					<tbody>
 						{maintenance.belts.map(belt => (
 							<tr>
-								<td class="w-6/12">{belt.name}</td>
-								<td class="w-4/12">{belt["manufacturer-part-number"]}</td>
-								<td class="w-2/12">{belt.quantity}</td>
+								<td>{belt.name}</td>
+								<td>{belt["manufacturer-part-number"]}</td>
+								<td>{belt.quantity}</td>
 							</tr>))}
 					</tbody>
 				</table>
@@ -209,23 +204,23 @@ const hasNotes = {
 		<div class="maintenance-section" id="hoses">
 			<h2 class="text-3xl">Hoses</h2>
 
-			<div class="maintenance-table-container">
+			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
-					<thead>
+					<thead class="sticky top-0">
 					<tr>
-						<th>Name</th>
-						<th>Size (millimeters)</th>
-						<th>Length (inches)</th>
-						<th>Quantity</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Name</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Size (millimeters)</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Length (inches)</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-24">Quantity</th>
 					</tr>
 					</thead>
 					<tbody>
 						{maintenance.hoses.map(hose => (
 							<tr>
-								<td class="w-2/5">{hose.name}</td>
-								<td class="w-1/5">{hose["size-mm"]} mm</td>
-								<td class="w-1/5">{hose["length-inches"]} inches</td>
-								<td class="w-1/5">{hose.quantity}</td>
+								<td>{hose.name}</td>
+								<td>{hose["size-mm"]} mm</td>
+								<td>{hose["length-inches"]} inches</td>
+								<td>{hose.quantity}</td>
 							</tr>))}
 					</tbody>
 				</table>
@@ -235,16 +230,16 @@ const hasNotes = {
 		<div class="maintenance-section" id="replacement-parts">
 			<h2 class="text-3xl">Replacement Parts</h2>
 
-			<div class="maintenance-table-container">
+			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
-					<thead>
+					<thead class="sticky top-0">
 					<tr>
-						<th>Name</th>
-						<th>Category</th>
-						<th>Manufacturer <span class="whitespace-nowrap">Part #</span></th>
-						<th>Alt. Part #</th>
-						<th>Part Links</th>
-						{hasNotes["replacementParts"] && <th>Notes</th>}
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Name</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Category</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Manufacturer <span class="whitespace-nowrap">Part #</span></th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Alt. Part #</th>
+						<th class="p-1 md:p-2 lg:p-4 min-w-36">Part Links</th>
+						{hasNotes["replacementParts"] && <th class="p-1 md:p-2 lg:p-4 min-w-60">Notes</th>}
 					</tr>
 					</thead>
 					<tbody>
@@ -252,17 +247,17 @@ const hasNotes = {
 						.sort((a, b) => a.category.localeCompare(b.category))
 						.map(part => (
 							<tr>
-								<td class="w-2/12">{part.name}</td>
-								<td class="w-1/12">{categoryToDisplayValue(part.category)}</td>
-								<td class="w-2/12">{part["manufacturer-part-number"]}</td>
-								<td class="w-2/12">
+								<td>{part.name}</td>
+								<td>{categoryToDisplayValue(part.category)}</td>
+								<td>{part["manufacturer-part-number"]}</td>
+								<td>
 									{(part["alternative-part-numbers"] ?? []).map(altPartNum => (
 										<ul>
 											<li class="whitespace-nowrap">{altPartNum.text}</li>
 										</ul>
 									))}
 								</td>
-								<td class="w-1/12">
+								<td>
 									{(part["part-links"] ?? []).map(partLink => (
 										<ul>
 											<li>
@@ -272,7 +267,7 @@ const hasNotes = {
 									))}
 								</td>
 								{hasNotes["replacementParts"] && (
-									<td class="w-4/12">
+									<td>
 										<div set:html={parse(part.notes ?? "")}></div>
 									</td>)}
 							</tr>))}

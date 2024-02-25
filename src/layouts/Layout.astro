@@ -18,7 +18,7 @@ const { title, metaTags } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={metaTags?.description ?? ""} />
-		<meta name="viewport" content="width=device-width" />
+		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<link rel="icon" type="image/svg+xml" href="/assets/img/logo-iconoly.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - JDM Depot</title>

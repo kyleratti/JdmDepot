@@ -21,6 +21,7 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^9.2.6",
     "marked": "^12.0.0",
+    "sass": "^1.71.1",
     "semantic-release": "^23.0.2"
   }
 }

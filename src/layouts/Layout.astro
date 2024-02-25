@@ -1,5 +1,8 @@
 ---
 import Navigation from "../components/Navigation/Navigation.astro";
+import { Image } from "astro:assets";
+import logoImage from "./img/logo.svg";
+
 interface Props {
 	title: string;
 	metaTags?: {
@@ -23,7 +26,12 @@ const { title, metaTags } = Astro.props;
 	<body>
 	<header class="bg-red-400 px-4 lg:px-8 drop-shadow-xl mb-4">
 		<div class="flex justify-center align-center p-2">
-				<img class="max-w-[140px] h-auto" src="/assets/img/logo.svg" alt="JDM Depot Logo" />
+			<Image
+			id="logo"
+			src={logoImage}
+			widths={[140, 180, 220]}
+			sizes="(max-width: 360px) 140px, (max-width: 720px) 180px, 220px"
+			alt="JDM Depot Logo" />
 		</div>
 
 		<div class="flex justify-center pb-2">
@@ -36,6 +44,27 @@ const { title, metaTags } = Astro.props;
 	</div>
 	</body>
 </html>
+
+<style scoped lang="scss">
+	@media screen and (max-width: 360px) {
+		#logo {
+			width: 140px;
+		}
+	}
+
+	@media screen and (max-width: 720px) {
+		#logo {
+			width: 140px;
+		}
+	}
+
+	@media screen and (min-width: 720px){
+		#logo {
+			width: 220px;
+		}
+	}
+</style>
+
 <style is:global>
 	:root {
 	}

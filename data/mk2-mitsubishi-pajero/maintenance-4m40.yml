@@ -55,6 +55,7 @@ filters:
       - kind: rockauto
         part-number: 359927
   - name: Oil Filter
+    manufacturer-part-number: ME013307
     alternative-part-numbers:
       - text: NAPA 1067
       - text: WIX 51067

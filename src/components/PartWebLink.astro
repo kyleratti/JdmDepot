@@ -1,10 +1,6 @@
 ---
-import { PartLink } from "../maintenance";
+import type { PartLink } from "../maintenance";
 import { exhaustivePatternMatch } from "../util/patternMatchUtil";
-
-type ExpandRecursively<T> = T extends object
-	? T extends infer O ? { [K in keyof O]: ExpandRecursively<O[K]> } : never
-	: T;
 
 export interface Props {
 	item: PartLink;
@@ -12,27 +8,42 @@ export interface Props {
 
 const { item } = Astro.props;
 
-const [link, text] = (() => {
+const { link, text } = (() => {
 	switch (item.kind) {
 		case "advance-auto":
-			return [`https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${item["part-number"]}`, "Advance Auto"];
+			return {
+				link: `https://shop.advanceautoparts.com/web/SearchResults?searchTerm=${encodeURIComponent(item["part-number"])}`,
+				text: "Advance Auto"
+			};
 		case "amazon":
-			return [item.url, "Amazon"];
+			return {
+				link: item.url,
+				text: "Amazon"
+			};
 		case "rockauto":
-			return [`https://www.rockauto.com/en/moreinfo.php?pk=${item["part-number"]}`, "RockAuto"];
+			return {
+				link: `https://www.rockauto.com/en/moreinfo.php?pk=${encodeURIComponent(item["part-number"])}`,
+				text: "RockAuto"
+			};
 		case "napa":
-			return [item.url, "NAPA"];
+			return {
+				link: item.url,
+				text: "NAPA"
+			};
 		case "fcp-euro":
-			return [item.url, "FCP Euro"];
+			return {
+				link: item.url,
+				text: "FCP Euro"
+			};
 		default:
-			exhaustivePatternMatch(item.kind);
+			exhaustivePatternMatch(item);
 	}
 })();
 ---
 <a
-	class="text-blue-600"
+	class="text-blue-600 whitespace-nowrap"
 	href={link}
 	target="_blank"
 >
-	{text}
+	{text} <i class="fa-solid fa-arrow-up-right-from-square"></i>
 </a>

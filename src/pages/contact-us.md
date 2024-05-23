@@ -4,7 +4,7 @@ title: Contact Us
 ---
 Thanks for your interest in JDM Depot!
 
-We would love to hear [constructive ~~compliments~~ criticism](https://www.youtube.com/watch?v=xNkzdh0pHFc), suggestions, or corrections that you may have. Also, we're also always looking for more:
+We would love to hear [constructive ~~compliments~~ criticism](https://www.youtube.com/watch?v=xNkzdh0pHFc), suggestions, or corrections that you may have. We're also always looking for more:
 - Part Numbers
 - Maintenance Information
 - Repair Guides

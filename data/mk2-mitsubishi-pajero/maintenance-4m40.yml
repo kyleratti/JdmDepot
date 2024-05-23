@@ -37,9 +37,6 @@ fluids:
     capacity-quarts: 8
     specification: Non-IAT, Non-OAT Coolant
     part-links:
-      - kind: fcp-euro
-        part-number: PEN-8114117
-        url: https://www.fcpeuro.com/products/nf-engine-coolant-antifreeze-g001100-15l
       - kind: advance-auto
         part-number: 8114117
     notes: |

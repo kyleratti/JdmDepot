@@ -16,7 +16,7 @@
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.5",
-    "astro": "^4.9.0",
+    "astro": "^4.9.2",
     "marked": "^12.0.2",
     "sass": "^1.77.2",
     "semantic-release": "^23.1.1",

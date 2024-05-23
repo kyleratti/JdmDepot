@@ -7,6 +7,7 @@ import { quartsToLiters } from "@util/math";
 import { exhaustivePatternMatch } from "@util/patternMatchUtil";
 import { parse } from "marked";
 import PartWebLink from "../../../../components/PartWebLink.astro";
+import Breadcrumbs, { type Breadcrumb } from "@components/Navigation/Breadcrumbs.astro";
 
 const maintenance: MaintenanceItems = rawMaintenanceItemsYml as unknown as MaintenanceItems;
 
@@ -23,6 +24,14 @@ const hasNotes = {
 	filters: maintenance.filters.some(x => (x.notes?.length ?? 0) > 0),
 	replacementParts: maintenance["replacement-parts"].some(x => (x.notes?.length ?? 0) > 0),
 };
+
+const breadcrumbs: Array<Breadcrumb> = [
+	{ text: "Home", href: "/" },
+	{ text: "Cars" },
+	{ text: "MK2 Mitsubishi Pajero", href: "/cars/mk2-mitsubishi-pajero" },
+	{ text: "Maintenance and Part Numbers" },
+	{ text: "4M40 Maintenance", href: "/cars/mk2-mitsubishi-pajero/maintenance/4m40", isActive: true },
+];
 ---
 <style lang="scss">
 	h2 {
@@ -77,6 +86,8 @@ const hasNotes = {
 	}}
 >
 	<main class="md:container mx-2 lg:mx-auto">
+		<Breadcrumbs crumbs={breadcrumbs} />
+
 		<div class="lg:w-1/2 m-auto sm:mb-8">
 			<div class="text-xl mb-4">MK2 Mitsubishi Pajero</div>
 			<h1 class="text-4xl mb-4">4M40 Maintenance</h1>

@@ -1,0 +1,21 @@
+---
+export type Breadcrumb = {
+  text: string;
+  href?: string;
+  isActive?: boolean;
+};
+
+export interface Props {
+  crumbs: Array<Breadcrumb>;
+}
+---
+<div class="mx-auto my-8">
+  <ul class="flex justify-center space-x-4">
+    {Astro.props.crumbs.map(({ href, text, isActive }) => (
+      <li class={isActive ? "font-bold" : ""}>
+        {href
+          ? <a class="text-blue-600" href={href}>{text}</a>
+          : <span>{text}</span>}
+      </li>))}
+  </ul>
+</div>

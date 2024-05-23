@@ -5,6 +5,8 @@ import type { ContributorsFile } from "@/contributors";
 
 const contributorsFile: ContributorsFile = rawMaintenanceItemsYml as unknown as ContributorsFile;
 const { contributors } = contributorsFile;
+
+const sortedContributors = contributors.sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <style scoped>
@@ -30,11 +32,11 @@ const { contributors } = contributorsFile;
 		</p>
 
 		{
-			contributors.length > 0 && (
+			sortedContributors.length > 0 && (
 				<div id="contributors">
 					A big thank you to all contributors to the site!
 					<ul>
-						{contributors.map((contributor) => (
+						{sortedContributors.map((contributor) => (
 							<li class="list-disc ml-8">{contributor.name}</li>
 						))}
 					</ul>

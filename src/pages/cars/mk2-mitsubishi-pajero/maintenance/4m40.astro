@@ -285,7 +285,8 @@ const hasNotes = {
 						<th class="p-1 md:p-2 lg:p-4 min-w-36">Category</th>
 						<th class="p-1 md:p-2 lg:p-4 min-w-36">Manufacturer <span class="whitespace-nowrap">Part #</span></th>
 						<th class="p-1 md:p-2 lg:p-4 min-w-36">Alt. Part #</th>
-						<th class="p-1 md:p-2 lg:p-4 min-w-36">Part Links</th>
+						{maintenance["replacement-parts"].filter(x => (x["part-links"]?.length ?? 0) > 0).length > 0 &&
+							<th class="p-1 md:p-2 lg:p-4 min-w-36">Part Links</th>}
 						{hasNotes["replacementParts"] && <th class="p-1 md:p-2 lg:p-4 min-w-60">Notes</th>}
 					</tr>
 					</thead>
@@ -304,15 +305,16 @@ const hasNotes = {
 										</ul>
 									))}
 								</td>
-								<td>
-									{(part["part-links"] ?? []).map(partLink => (
-										<ul>
-											<li>
-												<PartWebLink item={partLink} />
-											</li>
-										</ul>
-									))}
-								</td>
+								{maintenance["replacement-parts"].filter(x => (x["part-links"]?.length ?? 0) > 0).length > 0 &&
+									<td>
+										{(part["part-links"] ?? []).map(partLink => (
+											<ul>
+												<li>
+													<PartWebLink item={partLink} />
+												</li>
+											</ul>
+										))}
+									</td>}
 								{hasNotes["replacementParts"] && (
 									<td>
 										<div set:html={parse(part.notes ?? "")}></div>

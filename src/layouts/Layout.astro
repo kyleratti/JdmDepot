@@ -31,8 +31,10 @@ const { title, metaTags } = Astro.props;
 			id="logo"
 			src={logoImage}
 			widths={[140, 180, 220]}
+			decoding="sync"
+			loading="eager"
 			sizes="(max-width: 360px) 140px, (max-width: 720px) 180px, 220px"
-			alt="JDM Depot Logo" />
+			alt="" />
 		</div>
 
 		<div class="flex justify-center pb-2">

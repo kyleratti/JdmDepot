@@ -20,7 +20,6 @@ const { title, metaTags } = Astro.props;
 		<meta name="description" content={metaTags?.description ?? ""} />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<link rel="icon" type="image/svg+xml" href="/assets/img/logo-iconoly.svg" />
-		<script is:inline src="https://kit.fontawesome.com/d85d4d6f28.js" crossorigin="anonymous"></script>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - JDM Depot</title>
 	</head>
@@ -45,6 +44,8 @@ const { title, metaTags } = Astro.props;
 	<div class="container m-auto">
 		<slot />
 	</div>
+
+	<script is:inline src="https://kit.fontawesome.com/d85d4d6f28.js" crossorigin="anonymous"></script>
 	</body>
 </html>
 

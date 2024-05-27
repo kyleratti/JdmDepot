@@ -1,3 +1,11 @@
+## [2.10.1](https://github.com/kyleratti/JdmDepot/compare/v2.10.0...v2.10.1) (2024-05-27)
+
+
+### Bug Fixes
+
+* defer font loading ([c2d8ff8](https://github.com/kyleratti/JdmDepot/commit/c2d8ff8d54d161fa21859a6dc29e68b86edc655b))
+* eager load header image ([f5d8e10](https://github.com/kyleratti/JdmDepot/commit/f5d8e10c0a461f1a15a5bbeb851910fbe9e2cab5))
+
 # [2.10.0](https://github.com/kyleratti/JdmDepot/compare/v2.9.3...v2.10.0) (2024-05-27)
 
 

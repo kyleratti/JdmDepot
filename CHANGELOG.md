@@ -1,3 +1,22 @@
+# [2.10.0](https://github.com/kyleratti/JdmDepot/compare/v2.9.3...v2.10.0) (2024-05-27)
+
+
+### Bug Fixes
+
+* remove dead FCP Euro link ([c64c8e2](https://github.com/kyleratti/JdmDepot/commit/c64c8e223143a22859389b8bae13416fc4466d24))
+* remove dead NAPA link ([da393b6](https://github.com/kyleratti/JdmDepot/commit/da393b6406915a711e08263542f54ed668da22c2))
+* remove unused prop ([2dc26c7](https://github.com/kyleratti/JdmDepot/commit/2dc26c7f9f975c2247209be85063421ac674b706))
+* sort contributors alphabetically ([6b34d8d](https://github.com/kyleratti/JdmDepot/commit/6b34d8dfe834151b70d557c20c0c8c115e122cf3))
+* use direct cross-references for 4M40 oil filter ([7854570](https://github.com/kyleratti/JdmDepot/commit/7854570a921f36af1de230e799de287a57f650b3))
+
+
+### Features
+
+* add link icon to part links ([6f6ad91](https://github.com/kyleratti/JdmDepot/commit/6f6ad913693b4f2d85125847cfca9bf222ba68d9))
+* add OEM part number for 4M40 oil filter ([0ff78b9](https://github.com/kyleratti/JdmDepot/commit/0ff78b984d6b010831e7527a540a461dcb6b2e48))
+* add Pajero parts sources ([7152c70](https://github.com/kyleratti/JdmDepot/commit/7152c70e1220df8e042e15605f11401eac65424a))
+* add striped table rows ([2820a5a](https://github.com/kyleratti/JdmDepot/commit/2820a5ab69167fc70054cb3f58290ec910f46c31))
+
 ## [2.9.3](https://github.com/kyleratti/JdmDepot/compare/v2.9.2...v2.9.3) (2024-02-25)
 
 

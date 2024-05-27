@@ -1,7 +1,13 @@
 name: "Release"
 
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "The tag to release"
+        required: true
+        type: string
+        default: "main"
 
 # Allow one run of this workflow per branch and cancel existing runs if triggered again
 concurrency:

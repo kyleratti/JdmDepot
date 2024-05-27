@@ -1,0 +1,44 @@
+name: "Release"
+
+on:
+  workflow_dispatch
+
+# Allow one run of this workflow per branch and cancel existing runs if triggered again
+concurrency:
+  group: jdmdepot-release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    outputs:
+      TAG_NAME: ${{ steps.release_export.outputs.TAG_NAME }}
+      FILE_NAME: ${{ steps.release_export.outputs.FILE_NAME }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: '0' # Load entire history
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+      - run: npm ci
+        working-directory: ./src
+      - run: npm run build
+        working-directory: ./src
+      - name: Release
+        id: release-app
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx semantic-release
+          tail $GITHUB_OUTPUT
+      - name: Validate release
+        env:
+          RELEASE_SUCCESS: ${{ steps.release-app.outputs.RELEASE_SUCCESS }}
+        run: |
+          [ "$RELEASE_SUCCESS" = "true" ] && exit 0 || exit 1
+      - id: release_export
+        run: |
+          echo TAG_NAME=v${{ steps.release-app.outputs.RELEASE_VERSION_NUMBER }} >> $GITHUB_OUTPUT
+          echo FILE_NAME=jdmdepot-v${{ steps.release-app.outputs.RELEASE_VERSION_NUMBER }}.tar.gz >> $GITHUB_OUTPUT
+          tail $GITHUB_OUTPUT

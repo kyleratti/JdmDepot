@@ -10,7 +10,7 @@ on:
 
 # Allow one run of this workflow per branch and cancel existing runs if triggered again
 concurrency:
-  group: JdmDepot-test-${{ github.ref }}
+  group: JdmDepot-deploy-production
   cancel-in-progress: true
 
 jobs:

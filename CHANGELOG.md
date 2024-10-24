@@ -1,3 +1,15 @@
+# [2.11.0](https://github.com/kyleratti/JdmDepot/compare/v2.10.1...v2.11.0) (2024-10-24)
+
+
+### Bug Fixes
+
+* add astro types file ([8bc1f82](https://github.com/kyleratti/JdmDepot/commit/8bc1f826ff043a7ff2f48d6e0ba78679d0e50a58))
+
+
+### Features
+
+* add 91-94 and 96 wiring manuals ([3321e95](https://github.com/kyleratti/JdmDepot/commit/3321e95a32d26986796aa3f9ce1a4bdf3008b768))
+
 ## [2.10.1](https://github.com/kyleratti/JdmDepot/compare/v2.10.0...v2.10.1) (2024-05-27)
 
 

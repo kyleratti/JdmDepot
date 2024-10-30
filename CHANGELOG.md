@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/kyleratti/JdmDepot/compare/v2.11.0...v2.12.0) (2024-10-30)
+
+
+### Features
+
+* add copy permalink button ([66e05a1](https://github.com/kyleratti/JdmDepot/commit/66e05a1865804d95d74e4f5315b07eecf9f667d7))
+
 # [2.11.0](https://github.com/kyleratti/JdmDepot/compare/v2.10.1...v2.11.0) (2024-10-24)
 
 

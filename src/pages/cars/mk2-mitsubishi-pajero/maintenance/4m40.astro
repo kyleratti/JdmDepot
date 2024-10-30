@@ -70,6 +70,7 @@ const hasNotes = {
 		}
 	}
 </style>
+
 <Layout
 	title="4M40 Maintenance - MK2 Mitsubishi Pajero"
 	metaTags={{
@@ -86,7 +87,7 @@ const hasNotes = {
 			</p>
 
 			<div class="table-of-contents container my-4">
-				<h2 class="text-3xl">Table of Contents</h2>
+				<h2 class="text-3xl flex items-center justify-center gap-2">Table of Contents</h2>
 				<ul class="list-disc ml-8">
 					<li><a class="text-blue-600" href="#finding-parts">Finding Parts</a></li>
 					<li><a class="text-blue-600" href="#fluids">Fluids</a></li>
@@ -99,7 +100,17 @@ const hasNotes = {
 		</div>
 
 		<div class="lg:w-1/2 m-auto sm:mb-8" id="finding-parts">
-			<h2 class="text-3xl">Finding Parts</h2>
+			<h2 class="text-3xl flex items-center justify-center gap-2">
+				Finding Parts
+				<button type="button"
+								class="text-sm text-blue-600 hover:text-black focus:text-black"
+								id="copy-permalink--finding-parts"
+								title="Copy permalink"
+								aria-labelledby="copy-permalink-label">
+					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
+					<i class="fa-solid fa-link"></i>
+				</button>
+			</h2>
 
 			<p class="my-2">
 				Many replacement parts are readily available for these cars. Below are some reference articles and reputable parts websites commonly used by the community.
@@ -145,7 +156,17 @@ const hasNotes = {
 		</div>
 
 		<div class="maintenance-section" id="fluids">
-			<h2 class="text-3xl">Fluids</h2>
+			<h2 class="text-3xl flex items-center justify-center gap-2">
+				Fluids
+				<button type="button"
+								class="text-sm text-blue-600 hover:text-black focus:text-black"
+								id="copy-permalink--fluids"
+								title="Copy permalink"
+								aria-labelledby="copy-permalink-label">
+					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
+					<i class="fa-solid fa-link"></i>
+				</button>
+			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
@@ -185,7 +206,17 @@ const hasNotes = {
 		</div>
 
 		<div class="maintenance-section" id="filters">
-			<h2 class="text-3xl">Filters</h2>
+			<h2 class="text-3xl flex items-center justify-center gap-2">
+				Filters
+				<button type="button"
+								class="text-sm text-blue-600 hover:text-black focus:text-black"
+								id="copy-permalink--filters"
+								title="Copy permalink"
+								aria-labelledby="copy-permalink-label">
+					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
+					<i class="fa-solid fa-link"></i>
+				</button>
+			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
@@ -229,7 +260,17 @@ const hasNotes = {
 		</div>
 
 		<div class="maintenance-section" id="belts">
-			<h2 class="text-3xl">Belts</h2>
+			<h2 class="text-3xl flex items-center justify-center gap-2">
+				Belts
+				<button type="button"
+								class="text-sm text-blue-600 hover:text-black focus:text-black"
+								id="copy-permalink--belts"
+								title="Copy permalink"
+								aria-labelledby="copy-permalink-label">
+					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
+					<i class="fa-solid fa-link"></i>
+				</button>
+			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
@@ -253,7 +294,17 @@ const hasNotes = {
 		</div>
 
 		<div class="maintenance-section" id="hoses">
-			<h2 class="text-3xl">Hoses</h2>
+			<h2 class="text-3xl flex items-center justify-center gap-2">
+				Hoses
+				<button type="button"
+								class="text-sm text-blue-600 hover:text-black focus:text-black"
+								id="copy-permalink--hoses"
+								title="Copy permalink"
+								aria-labelledby="copy-permalink-label">
+					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
+					<i class="fa-solid fa-link"></i>
+				</button>
+			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
@@ -279,7 +330,17 @@ const hasNotes = {
 		</div>
 
 		<div class="maintenance-section pb-24" id="replacement-parts">
-			<h2 class="text-3xl">Replacement Parts</h2>
+			<h2 class="text-3xl flex items-center justify-center gap-2">
+				Replacement Parts
+				<button type="button"
+								class="text-sm text-blue-600 hover:text-black focus:text-black"
+								id="copy-permalink--replacement-parts"
+								title="Copy permalink"
+								aria-labelledby="copy-permalink-label">
+					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
+					<i class="fa-solid fa-link"></i>
+				</button>
+			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
 				<table class="maintenance-table sm:maintenance-table-sm md:maintenance-table-md">
@@ -330,3 +391,45 @@ const hasNotes = {
 		</div>
 	</main>
 </Layout>
+
+<script is:inline>
+	const getPermalinkForHash = (hash) => {
+		const permalink = new URL(window.location.href);
+		permalink.hash = hash;
+
+		return permalink.href;
+	};
+
+	const copyToClipboard = (text) => {
+		try {
+			console.log("writing text", text);
+			navigator.clipboard.writeText(text);
+		} catch (e) {
+			console.error(e);
+			prompt("There was an error copying text to the clipboard. Please copy it manually.", text);
+		}
+	};
+
+	const copyPermalinkButtons = [
+		{ htmlId: "copy-permalink--finding-parts", hash: "finding-parts" },
+		{ htmlId: "copy-permalink--fluids", hash: "fluids" },
+		{ htmlId: "copy-permalink--filters", hash: "filters" },
+		{ htmlId: "copy-permalink--belts", hash: "belts" },
+		{ htmlId: "copy-permalink--hoses", hash: "hoses" },
+		{ htmlId: "copy-permalink--replacement-parts", hash: "replacement-parts" },
+	];
+
+	for (const { htmlId, hash } of copyPermalinkButtons) {
+		const el = document.getElementById(htmlId);
+
+		if (!el) {
+			throw new Error("Unable to find element: " + htmlId);
+		}
+
+		el.addEventListener("click", () => {
+			const url = getPermalinkForHash(hash);
+			console.log(url);
+			copyToClipboard(url);
+		});
+	}
+</script>

@@ -1,3 +1,10 @@
+# [2.13.0](https://github.com/kyleratti/JdmDepot/compare/v2.12.0...v2.13.0) (2025-03-08)
+
+
+### Features
+
+* add 1993 alignment specs ([b335225](https://github.com/kyleratti/JdmDepot/commit/b3352258aff2265b88f5d8503c02e58367a757e9))
+
 # [2.12.0](https://github.com/kyleratti/JdmDepot/compare/v2.11.0...v2.12.0) (2024-10-30)
 
 

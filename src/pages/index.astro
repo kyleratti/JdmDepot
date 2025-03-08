@@ -9,11 +9,6 @@ const { contributors } = contributorsFile;
 const sortedContributors = contributors.sort((a, b) => a.name.localeCompare(b.name));
 ---
 
-<style scoped>
-	p {
-		@apply my-4;
-	}
-</style>
 <Layout
 	title="Welcome"
 	metaTags={{
@@ -21,12 +16,12 @@ const sortedContributors = contributors.sort((a, b) => a.name.localeCompare(b.na
 			"A knowledge base for JDM cars that have been imported into the USA. Includes part numbers, state-side parts distributors, repair guides, and more.",
 	}}>
 	<main class="p-4 lg:p-0 lg:w-1/2 m-auto">
-		<p>
+		<p class="my-4">
 			<b>JDM Depot</b> is an online knowledge base for cars originally produced in the Japanese
 			Domestic Market. This is often referred to as JDM.
 		</p>
 
-		<p>
+		<p class="my-4">
 			Most of the information here will pertain to vehicle owners who have imported their
 			vehicle from the Japanese Domestic Market into the United States of America.
 		</p>

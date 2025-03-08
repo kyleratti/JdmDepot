@@ -11,74 +11,81 @@ import Layout from "@layouts/Layout.astro";
 	<main class="p-4 lg:p-0 lg:w-1/2 m-auto">
 		<p>The MK2 Mitsubishi Pajero was sold from 1992 through 1998.</p>
 
-		<section>
-			<h2>General Pajero Information</h2>
+		<section class="my-8">
+			<h2 class="text-2xl font-bold">General Pajero Information</h2>
 
-			<section>
-				<h3>Reference Guides and Manuals</h3>
+			<section class="my-2">
+				<h3 class="text-lg font-normal">Reference Guides and Manuals</h3>
 
-				<ul class="link-list">
-					<li><a target="_blank" href="/assets/cars/mk2-mitsubishi-pajero/mitsubishi-pajero-fsm-1993-1996-engine-chassis-body.pdf">1993 - 1996 Factory Service Manual: Body and Chassis</a></li>
-					<li><a target="_blank" href="/assets/cars/mk2-mitsubishi-pajero/mitsubishi-pajero-fsm-1993-1996-electrical.pdf">1993 - 1996 Factory Service Manual: Electrical</a></li>
-					<li><a target="_blank" href="/assets/cars/mk2-mitsubishi-pajero/PHJE9026_A_B_C_PAJERO_91-94_ELECTRICAL_WIRING.pdf">1991 - 1994 Workshop Manual: Electrical</a></li>
-					<li><a target="_blank" href="/assets/cars/mk2-mitsubishi-pajero/PHJE9026-E_PAJERO_96_ELECTRICAL_WIRING.pdf">1996 Workshop Manual: Electrical</a></li>
+				<ul class="mt-2 list-disc">
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 target="_blank"
+							 href="/assets/cars/mk2-mitsubishi-pajero/mitsubishi-pajero-fsm-1993-1996-engine-chassis-body.pdf">
+							1993 - 1996 Factory Service Manual: Body and Chassis
+						</a>
+					</li>
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 target="_blank"
+							 href="/assets/cars/mk2-mitsubishi-pajero/mitsubishi-pajero-fsm-1993-1996-electrical.pdf">
+							1993 - 1996 Factory Service Manual: Electrical
+						</a>
+					</li>
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 target="_blank"
+							 href="/assets/cars/mk2-mitsubishi-pajero/PHJE9026_A_B_C_PAJERO_91-94_ELECTRICAL_WIRING.pdf">
+							1991 - 1994 Workshop Manual: Electrical
+						</a>
+					</li>
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 target="_blank"
+							 href="/assets/cars/mk2-mitsubishi-pajero/PHJE9026-E_PAJERO_96_ELECTRICAL_WIRING.pdf">
+							1996 Workshop Manual: Electrical
+						</a>
+					</li>
 				</ul>
 			</section>
 		</section>
 
-		<section class="my-2">
-			<h2>4M40 2.8L Turbo Diesel Engine</h2>
+		<section class="my-8">
+			<h2 class="text-2xl font-bold">4M40 2.8L Turbo Diesel Engine</h2>
 
-			<section>
-				<h3>Reference Guides and Manuals</h3>
+			<section class="my-2">
+				<h3 class="text-lg font-normal">Reference Guides and Manuals</h3>
 
-				<ul class="link-list">
-					<li><a target="_blank" href="/assets/cars/mk2-mitsubishi-pajero/91-99 Pajero 4m4 general Glow Plug System 16-44_230928_122753.pdf">1991 - 1999 4M40 Glow Plug Wiring Diagram</a></li>
-					<li><a target="_blank" href="/assets/cars/mk2-mitsubishi-pajero/4M40 Diesel Engine Workshop Manual PWEE9409 11A.pdf">4M40 Engine Specification Manual</a></li>
+				<ul class="mt-2 list-disc">
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 target="_blank"
+							 href="/assets/cars/mk2-mitsubishi-pajero/91-99 Pajero 4m4 general Glow Plug System 16-44_230928_122753.pdf">
+							1991 - 1999 4M40 Glow Plug Wiring Diagram
+						</a>
+					</li>
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 target="_blank"
+							 href="/assets/cars/mk2-mitsubishi-pajero/4M40 Diesel Engine Workshop Manual PWEE9409 11A.pdf">
+							4M40 Engine Specification Manual
+						</a>
+					</li>
 				</ul>
 			</section>
 
-			<section>
-				<h3>Maintenance and Part Numbers</h3>
+			<section class="my-2">
+				<h3 class="text-lg font-normal">Maintenance and Part Numbers</h3>
 
-				<ul class="link-list">
-					<li><a href="/cars/mk2-mitsubishi-pajero/maintenance/4m40">Part Numbers</a></li>
+				<ul class="mt-2 list-disc">
+					<li class="ml-8">
+						<a class="text-blue-600"
+							 href="/cars/mk2-mitsubishi-pajero/maintenance/4m40">
+							Part Numbers
+						</a>
+					</li>
 				</ul>
 			</section>
 		</section>
 	</main>
 </Layout>
-
-<style>
-	section {
-		@apply my-2;
-	}
-
-	section h2 {
-		@apply text-2xl font-bold;
-	}
-
-	main > section {
-		@apply my-8;
-	}
-
-	section > section {
-		@apply my-2;
-	}
-
-	section h3 {
-		@apply text-lg font-normal;
-	}
-
-	ul.link-list {
-		@apply mt-2 list-disc;
-	}
-
-	ul.link-list li {
-		@apply ml-8;
-	}
-
-	ul.link-list li a {
-		@apply text-blue-600;
-	}
-</style>

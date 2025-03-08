@@ -25,6 +25,8 @@ const hasNotes = {
 };
 ---
 <style lang="scss">
+	@import "tailwindcss";
+
 	h2 {
 		@apply text-center;
 	}
@@ -51,17 +53,18 @@ const hasNotes = {
 		}
 
 		tr {
-			@apply even:bg-gray-100;
+			@apply even:bg-gray-200;
 		}
 
 		tr:hover {
-			@apply bg-red-50;
+			@apply bg-red-100;
 		}
 
 		td {
 			@apply px-2;
 			@apply py-4;
 			@apply border;
+			@apply border-gray-300;
 		}
 
 		ul > li {
@@ -102,14 +105,12 @@ const hasNotes = {
 		<div class="lg:w-1/2 m-auto sm:mb-8" id="finding-parts">
 			<h2 class="text-3xl flex items-center justify-center gap-2">
 				Finding Parts
-				<button type="button"
-								class="text-sm text-blue-600 hover:text-black focus:text-black"
-								id="copy-permalink--finding-parts"
-								title="Copy permalink"
-								aria-labelledby="copy-permalink-label">
-					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
-					<i class="fa-solid fa-link"></i>
-				</button>
+				<a href="#finding-parts"
+					 class="text-sm text-blue-600 hover:text-blue-500 focus:text-blue-500">
+					<i class="fa-solid fa-link">
+						<span class="sr-only">Jump to Finding Parts section</span>
+					</i>
+				</a>
 			</h2>
 
 			<p class="my-2">
@@ -158,14 +159,12 @@ const hasNotes = {
 		<div class="maintenance-section" id="fluids">
 			<h2 class="text-3xl flex items-center justify-center gap-2">
 				Fluids
-				<button type="button"
-								class="text-sm text-blue-600 hover:text-black focus:text-black"
-								id="copy-permalink--fluids"
-								title="Copy permalink"
-								aria-labelledby="copy-permalink-label">
-					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
-					<i class="fa-solid fa-link"></i>
-				</button>
+				<a href="#fluids"
+					 class="text-sm text-blue-600 hover:text-blue-500 focus:text-blue-500">
+					<i class="fa-solid fa-link">
+						<span class="sr-only">Jump to Fluids section</span>
+					</i>
+				</a>
 			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
@@ -208,14 +207,12 @@ const hasNotes = {
 		<div class="maintenance-section" id="filters">
 			<h2 class="text-3xl flex items-center justify-center gap-2">
 				Filters
-				<button type="button"
-								class="text-sm text-blue-600 hover:text-black focus:text-black"
-								id="copy-permalink--filters"
-								title="Copy permalink"
-								aria-labelledby="copy-permalink-label">
-					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
-					<i class="fa-solid fa-link"></i>
-				</button>
+				<a href="#filters"
+					 class="text-sm text-blue-600 hover:text-blue-500 focus:text-blue-500">
+					<i class="fa-solid fa-link">
+						<span class="sr-only">Jump to Filters section</span>
+					</i>
+				</a>
 			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
@@ -262,14 +259,12 @@ const hasNotes = {
 		<div class="maintenance-section" id="belts">
 			<h2 class="text-3xl flex items-center justify-center gap-2">
 				Belts
-				<button type="button"
-								class="text-sm text-blue-600 hover:text-black focus:text-black"
-								id="copy-permalink--belts"
-								title="Copy permalink"
-								aria-labelledby="copy-permalink-label">
-					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
-					<i class="fa-solid fa-link"></i>
-				</button>
+				<a href="#belts"
+					 class="text-sm text-blue-600 hover:text-blue-500 focus:text-blue-500">
+					<i class="fa-solid fa-link">
+						<span class="sr-only">Jump to Belts section</span>
+					</i>
+				</a>
 			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
@@ -296,14 +291,12 @@ const hasNotes = {
 		<div class="maintenance-section" id="hoses">
 			<h2 class="text-3xl flex items-center justify-center gap-2">
 				Hoses
-				<button type="button"
-								class="text-sm text-blue-600 hover:text-black focus:text-black"
-								id="copy-permalink--hoses"
-								title="Copy permalink"
-								aria-labelledby="copy-permalink-label">
-					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
-					<i class="fa-solid fa-link"></i>
-				</button>
+				<a href="#hoses"
+					 class="text-sm text-blue-600 hover:text-blue-500 focus:text-blue-500">
+					<i class="fa-solid fa-link">
+						<span class="sr-only">Jump to Hoses section</span>
+					</i>
+				</a>
 			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
@@ -332,14 +325,12 @@ const hasNotes = {
 		<div class="maintenance-section pb-24" id="replacement-parts">
 			<h2 class="text-3xl flex items-center justify-center gap-2">
 				Replacement Parts
-				<button type="button"
-								class="text-sm text-blue-600 hover:text-black focus:text-black"
-								id="copy-permalink--replacement-parts"
-								title="Copy permalink"
-								aria-labelledby="copy-permalink-label">
-					<span id="copy-permalink-label" class="sr-only">Copy permalink</span>
-					<i class="fa-solid fa-link"></i>
-				</button>
+				<a href="#replacement-parts"
+					 class="text-sm text-blue-600 hover:text-blue-500 focus:text-blue-500">
+					<i class="fa-solid fa-link">
+						<span class="sr-only">Jump to Replacement Parts section</span>
+					</i>
+				</a>
 			</h2>
 
 			<div class="maintenance-table-container max-h-screen">
@@ -391,45 +382,3 @@ const hasNotes = {
 		</div>
 	</main>
 </Layout>
-
-<script is:inline>
-	const getPermalinkForHash = (hash) => {
-		const permalink = new URL(window.location.href);
-		permalink.hash = hash;
-
-		return permalink.href;
-	};
-
-	const copyToClipboard = (text) => {
-		try {
-			console.log("writing text", text);
-			navigator.clipboard.writeText(text);
-		} catch (e) {
-			console.error(e);
-			prompt("There was an error copying text to the clipboard. Please copy it manually.", text);
-		}
-	};
-
-	const copyPermalinkButtons = [
-		{ htmlId: "copy-permalink--finding-parts", hash: "finding-parts" },
-		{ htmlId: "copy-permalink--fluids", hash: "fluids" },
-		{ htmlId: "copy-permalink--filters", hash: "filters" },
-		{ htmlId: "copy-permalink--belts", hash: "belts" },
-		{ htmlId: "copy-permalink--hoses", hash: "hoses" },
-		{ htmlId: "copy-permalink--replacement-parts", hash: "replacement-parts" },
-	];
-
-	for (const { htmlId, hash } of copyPermalinkButtons) {
-		const el = document.getElementById(htmlId);
-
-		if (!el) {
-			throw new Error("Unable to find element: " + htmlId);
-		}
-
-		el.addEventListener("click", () => {
-			const url = getPermalinkForHash(hash);
-			console.log(url);
-			copyToClipboard(url);
-		});
-	}
-</script>

@@ -78,3 +78,10 @@ replacement-parts:
     alternative-part-numbers:
       - text: BK 7031728
     notes: Ensure the cap is rated for 0.9 bar.
+  - name: Water Pump
+    category: cooling
+    manufacturer-part-number: ME996789
+    alternative-part-numbers:
+      - text: ME200411
+      - text: GMB 148-1570
+    notes: YMMV with eBay knock-offs. I bought one and the pulley depth was wrong.

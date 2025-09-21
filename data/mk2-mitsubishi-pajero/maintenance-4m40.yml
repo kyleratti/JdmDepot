@@ -66,7 +66,7 @@ filters:
     part-links:
       - kind: rockauto
         part-number: 1379312
-    notes: If you are able to find a state-side source for this part, please let us know!
+    notes: This is for the oval-style air filter, not the circular "cyclone" filter.
 belts:
   - name: Accessory Belt
     manufacturer-part-number: 6219MC

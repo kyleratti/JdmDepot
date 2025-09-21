@@ -14,15 +14,15 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.2",
-    "astro": "^5.7.12",
-    "marked": "^15.0.11",
-    "sass": "^1.88.0",
-    "semantic-release": "^24.2.3",
-    "tailwindcss": "^4.1.6",
-    "typescript": "^5.8.3"
+    "@semantic-release/github": "^11.0.6",
+    "astro": "^5.13.9",
+    "marked": "^15.0.12",
+    "sass": "^1.92.1",
+    "semantic-release": "^24.2.8",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.6"
+    "@tailwindcss/vite": "^4.1.13"
   }
 }

@@ -61,6 +61,11 @@ filters:
         part-number: 579792
   - name: Engine Air Filter
     manufacturer-part-number: MD603384
+    alternative-part-numbers:
+      - text: WIX WA6019
+    part-links:
+      - kind: rockauto
+        part-number: 1379312
     notes: If you are able to find a state-side source for this part, please let us know!
 belts:
   - name: Accessory Belt

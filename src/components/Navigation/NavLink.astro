@@ -18,26 +18,25 @@ const isActiveUrl: boolean = (() => {
 
 	return currentUrl.pathname.startsWith(Astro.props.relativeUrl);
 })();
-
-const classes = (...params: (string | { [className: string]: boolean; })[]) => {
-	const allClasses: string[] = [];
-
-	for (const item of params) {
-		if (typeof item === "string")
-			allClasses.push(item);
-		else {
-			for (const [className, _] of Object.entries(item).filter(([_, isActive]) => isActive)) {
-				allClasses.push(className);
-			}
-		}
-	}
-
-	return allClasses.join(" ");
-};
 ---
-<a
-	class={classes("mr-4 hover:underline md:mr-6", { "font-semibold": isActiveUrl })}
-	href={getUrl(Astro.props.relativeUrl)}
->
-	<slot />
-</a>
+{
+	isActiveUrl && (
+		<a
+			class={"mr-4 hover:border-b-2 hover:border-red-600 md:mr-6 font-semibold border-b-1 border-red-600 px-1"}
+			href={getUrl(Astro.props.relativeUrl)}
+		>
+			<slot />
+		</a>
+	)
+}
+
+{
+	!isActiveUrl && (
+		<a
+			class={"mr-4 hover:border-b-2 hover:border-red-600 md:mr-6 px-1"}
+			href={getUrl(Astro.props.relativeUrl)}
+		>
+			<slot />
+		</a>
+	)
+}

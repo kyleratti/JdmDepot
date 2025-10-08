@@ -17,8 +17,8 @@ const sortedContributors = contributors.sort((a, b) => a.name.localeCompare(b.na
 	}}>
 	<main class="p-4 lg:p-0 lg:w-1/2 m-auto">
 		<p class="my-4">
-			<b>JDM Depot</b> is an online knowledge base for cars originally produced in the Japanese
-			Domestic Market. This is often referred to as JDM.
+			<b>JDM Depot</b> is an online knowledge base for the maintenance and repair of cars originally produced in
+			the Japanese Domestic Market (often referred to as JDM).
 		</p>
 
 		<p class="my-4">
@@ -26,10 +26,21 @@ const sortedContributors = contributors.sort((a, b) => a.name.localeCompare(b.na
 			vehicle from the Japanese Domestic Market into the United States of America.
 		</p>
 
+		<p class="my-4">
+			This is a passion project. There's no guarantees on the reliability of the information here.
+			We're just car people trying to share knowledge and help keep our cars on the road.
+		</p>
+
+		<div class="my-4">
+			<!--Bold text-->
+			<strong>We love contributions of any kind!</strong> If you have part numbers, repair guides, manuals, etc., we
+			would love to hear from you.
+		</div>
+
 		{
 			sortedContributors.length > 0 && (
 				<div id="contributors">
-					A big thank you to all contributors to the site!
+					And lastly, a big thank you to all contributors to the site!
 					<ul>
 						{sortedContributors.map((contributor) => (
 							<li class="list-disc ml-8">{contributor.name}</li>

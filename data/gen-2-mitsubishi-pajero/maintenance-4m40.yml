@@ -1,4 +1,4 @@
-car-id: "mk2-mitsubishi-pajero"
+car-id: "gen-2-mitsubishi-pajero"
 engine-id: "4M40"
 fluids:
   - name: Engine Oil

@@ -22,7 +22,7 @@ const isActiveUrl: boolean = (() => {
 {
 	isActiveUrl && (
 		<a
-			class={"mr-4 hover:border-b-2 hover:border-red-600 md:mr-6 font-semibold border-b-1 border-red-600 px-1"}
+			class={"mr-1 text-sm md:text-md hover:border-b-2 hover:border-red-600 md:mr-6 font-semibold border-b-1 border-red-600 px-1"}
 			href={getUrl(Astro.props.relativeUrl)}
 		>
 			<slot />
@@ -33,7 +33,7 @@ const isActiveUrl: boolean = (() => {
 {
 	!isActiveUrl && (
 		<a
-			class={"mr-4 hover:border-b-2 hover:border-red-600 md:mr-6 px-1"}
+			class={"mr-1 text-sm md:text-md hover:border-b-2 hover:border-red-600 md:mr-6 px-1"}
 			href={getUrl(Astro.props.relativeUrl)}
 		>
 			<slot />

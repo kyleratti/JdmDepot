@@ -2,6 +2,7 @@
 import Navigation from "../components/Navigation/Navigation.astro";
 import { Image } from "astro:assets";
 import logoImage from "./img/logo.svg";
+import logoImageNoText from "./img/logo-icononly.svg";
 import "@/styles/global.css";
 
 interface Props {
@@ -16,19 +17,19 @@ const { title, metaTags } = Astro.props;
 
 <style scoped lang="scss">
 	@media screen and (max-width: 360px) {
-		#logo {
+		.logo {
 			width: 140px;
 		}
 	}
 
 	@media screen and (max-width: 720px) {
-		#logo {
+		.logo {
 			width: 140px;
 		}
 	}
 
 	@media screen and (min-width: 720px){
-		#logo {
+		.logo {
 			width: 220px;
 		}
 	}
@@ -52,21 +53,32 @@ const { title, metaTags } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content={metaTags?.description ?? ""} />
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
-		<link rel="icon" type="image/svg+xml" href="/assets/img/logo-iconoly.svg" />
+		<link rel="icon" type="image/svg+xml" href="/assets/img/logo-icononly.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} - JDM Depot</title>
 	</head>
 	<body class="bg-gray-100">
 	<header class="bg-red-300 px-4 lg:px-8 drop-shadow-xl drop-shadow-yellow-50 mb-4">
 		<div class="flex justify-center align-center p-2">
-			<Image
-			id="logo"
-			src={logoImage}
-			widths={[140, 180, 220]}
-			decoding="sync"
-			loading="eager"
-			sizes="(max-width: 360px) 140px, (max-width: 720px) 180px, 220px"
-			alt="" />
+			<a href="/">
+				<Image
+					class="logo md:hidden"
+					src={logoImageNoText}
+					widths={[140, 180, 220]}
+					decoding="sync"
+					loading="eager"
+					sizes="(max-width: 360px) 140px, (max-width: 720px) 180px, 220px"
+					alt="" />
+
+				<Image
+					class="logo hidden md:block"
+					src={logoImage}
+					widths={[140, 180, 220]}
+					decoding="sync"
+					loading="eager"
+					sizes="(max-width: 360px) 140px, (max-width: 720px) 180px, 220px"
+					alt="" />
+			</a>
 		</div>
 
 		<div class="flex justify-center pb-2">
